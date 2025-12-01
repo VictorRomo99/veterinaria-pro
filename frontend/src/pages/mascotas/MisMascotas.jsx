@@ -4,7 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "./MisMascotas.css";
 
-const API = "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL;
 
 export default function MisMascotas() {
   const [mascotas, setMascotas] = useState([]);

@@ -11,7 +11,7 @@ export default function MisCitas() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const { data } = await axios.get("http://localhost:4000/api/citas", {
+      const { data } = await axios.get("/api/citas", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCitas(data || []);
@@ -46,7 +46,7 @@ export default function MisCitas() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/api/citas/${id}`, {
+      await axios.delete(`/api/citas/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       Swal.fire({
@@ -103,7 +103,7 @@ export default function MisCitas() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:4000/api/citas/${cita.id}/reprogramar-cliente`,
+        `/api/citas/${cita.id}/reprogramar-cliente`,
         {
           nuevaFecha: formValues.fecha,
           nuevaHora: formValues.hora,

@@ -86,7 +86,7 @@ export default function Register() {
 
     try {
       setBuscandoDni(true);
-      const res = await axios.get(`http://localhost:4000/api/reniec/${formData.dni}`);
+      const res = await axios.get(`/api/reniec/${formData.dni}`);
       const { nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento } = res.data;
 
       if (!nombres) {
@@ -189,7 +189,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/register", formData);
+      const res = await axios.post("/api/auth/register", formData);
 
       Swal.fire({
         icon: "success",

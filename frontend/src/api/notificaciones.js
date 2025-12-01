@@ -1,7 +1,7 @@
 // src/api/notificaciones.js
 import axios from "axios";
 
-const API = "http://localhost:4000/api/notificaciones";
+const API = "/api/notificaciones";
 
 // 🔔 Obtener notificaciones
 export async function obtenerNotificaciones(token) {

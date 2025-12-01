@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ModalHistoria.css";
 
-const API_BASE = "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL;
 
 export default function ModalHistoria({ historia, onClose }) {
   const token = localStorage.getItem("token");

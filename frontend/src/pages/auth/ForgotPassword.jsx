@@ -15,7 +15,7 @@ export default function ForgotPassword() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/forgot-password", { email });
+      const res = await axios.post("/api/auth/forgot-password", { email });
       setMensaje(res.data.message || "Correo de recuperación enviado correctamente.");
     } catch (err) {
       setError(err.response?.data?.message || "Error al enviar el correo de recuperación.");

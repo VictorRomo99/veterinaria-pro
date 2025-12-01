@@ -16,7 +16,7 @@ export default function Forgot2FA() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/solicitar-reset-2fa", {
+      const res = await axios.post("/api/auth/solicitar-reset-2fa", {
         email,
       });
       setMensaje(res.data.message);

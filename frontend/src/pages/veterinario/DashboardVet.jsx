@@ -27,7 +27,7 @@ export default function DashboardVet() {
 
   const cargarMascotas = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/mascotas", {
+      const res = await axios.get("/api/mascotas", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMascotas(res.data);
@@ -41,7 +41,7 @@ export default function DashboardVet() {
     setMascotaSeleccionada(m);
     try {
       const res = await axios.get(
-        `http://localhost:4000/api/historias/mascota/${m.id}`,
+        `/api/historias/mascota/${m.id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setHistorias(res.data);

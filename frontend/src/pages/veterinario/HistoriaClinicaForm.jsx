@@ -93,7 +93,7 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
 
     try {
       const historiaRes = await axios.post(
-        "http://localhost:4000/api/historias",
+        "/api/historias",
         {
           mascotaId: mascota.id,
           ...form,
@@ -110,7 +110,7 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
         archivos.forEach((file) => formData.append("archivos", file));
 
         await axios.post(
-          `http://localhost:4000/api/archivos/historia/${historiaId}`,
+          `/api/archivos/historia/${historiaId}`,
           formData,
           {
             headers: {

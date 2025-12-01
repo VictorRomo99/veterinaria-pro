@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminCaja.css";
 
-const API = "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL;
 
 export default function AdminCaja() {
   const token = localStorage.getItem("token");

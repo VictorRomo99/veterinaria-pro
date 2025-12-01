@@ -32,7 +32,7 @@ export default function ResetPassword() {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/auth/reset-password",
+        "/api/auth/reset-password",
         { token, password }
       );
 

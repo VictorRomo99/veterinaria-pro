@@ -28,7 +28,7 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
 
     try {
       const res = await axios.get(
-        `http://localhost:4000/api/auth/buscar?query=${busqueda}`,
+        `/api/auth/buscar?query=${busqueda}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -62,7 +62,7 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
 
     try {
       await axios.post(
-        "http://localhost:4000/api/mascotas",
+        "/api/mascotas",
         { ...nuevaMascota, duenoId: duenoSeleccionado.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );

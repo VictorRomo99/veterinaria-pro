@@ -43,7 +43,7 @@ function redirigirPorRol(rol) {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/login", {
+      const res = await axios.post(`${API}/api/auth/login`, {
         email,
         password,
       });
@@ -78,7 +78,7 @@ function redirigirPorRol(rol) {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/verify-2fa", {
+      const res = await axios.post("/api/auth/verify-2fa", {
         email: tempUser.email,
         codigo: codigo2FA,
       });
@@ -106,7 +106,7 @@ function redirigirPorRol(rol) {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/auth/solicitar-reset-2fa",
+        "/api/auth/solicitar-reset-2fa",
         { email: tempUser?.email || email }
       );
       alert(res.data.message);

@@ -126,7 +126,7 @@ export default function Reservar() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:4000/api/citas",
+        "/api/citas",
         {
           servicio,
           fecha,

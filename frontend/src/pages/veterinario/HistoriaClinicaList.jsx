@@ -15,7 +15,7 @@ export default function HistoriaClinicaList({ mascota }) {
   useEffect(() => {
     if (mascota?.id) {
       axios
-        .get(`http://localhost:4000/api/historias/mascota/${mascota.id}`, {
+        .get(`/api/historias/mascota/${mascota.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setHistorias(res.data))

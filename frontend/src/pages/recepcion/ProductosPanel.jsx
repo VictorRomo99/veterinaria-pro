@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "./ProductosPanel.css";
 
-const API = "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL;
 
 export default function ProductosPanel() {
   const token = localStorage.getItem("token");
