@@ -10,6 +10,8 @@ import LegalModal from "../legal/LegalModal";
 import "../legal/LegalModal.css";
 import PoliticasPrivacidad from "../legal/PoliticasPrivacidad";
 import TerminosCondiciones from "../legal/TerminosCondiciones";
+// ⭐⭐ API GLOBAL USANDO VARIABLE DE ENTORNO ⭐⭐
+const API = import.meta.env.VITE_API_URL;  
 
 
 export default function Register() {
