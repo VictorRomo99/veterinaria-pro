@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+const API = import.meta.env.VITE_API_URL;
+
+
 export default function Login() {
   const navigate = useNavigate();
 
@@ -78,7 +81,7 @@ function redirigirPorRol(rol) {
     setLoading(true);
 
     try {
-      const res = await axios.post("/api/auth/verify-2fa", {
+      const res = await axios.post(`${API}/api/auth/verify-2fa`, {
         email: tempUser.email,
         codigo: codigo2FA,
       });
@@ -105,9 +108,8 @@ function redirigirPorRol(rol) {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "/api/auth/solicitar-reset-2fa",
-        { email: tempUser?.email || email }
+      const res = await axios.post(`${API}/api/auth/solicitar-reset-2fa`, {
+       email: tempUser?.email || email }
       );
       alert(res.data.message);
       setStep(1);
