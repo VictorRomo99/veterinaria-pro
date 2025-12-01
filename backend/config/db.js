@@ -9,17 +9,23 @@ export const sequelize = new Sequelize(
   process.env.DB_PASS,
   {
     host: process.env.DB_HOST,
-    dialect: "postgres",
     port: process.env.DB_PORT,
+    dialect: "postgres",
     logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   }
 );
 
 export const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log("✅ Conexión a PostgreSQL establecida correctamente.");
+    console.log("✅ Conexión a PostgreSQL (Neon) establecida correctamente.");
   } catch (error) {
-    console.error("❌ Error al conectar a PostgreSQL:", error);
+    console.error("❌ Error al conectar a PostgreSQL (Neon):", error);
   }
 };
