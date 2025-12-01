@@ -1,0 +1,170 @@
+/* ============================================
+   CONTENEDOR PRINCIPAL DEL MODAL
+============================================ */
+.registrar-mascota-modal {
+  width: 520px;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  animation: fadeIn 0.25s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ============================================
+   TÍTULO
+============================================ */
+.modal-title {
+  text-align: center;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #1a7f5a;
+}
+
+.modal-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #45d7a8, #1a7f5a);
+  margin: 0.8rem auto 1.5rem;
+  width: 65%;
+  border-radius: 4px;
+}
+
+/* ============================================
+   GRUPO DE INPUTS
+============================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #145a40;
+}
+
+.input-box {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: #f3fdf8;
+  border: 2px solid #d6efe2;
+  font-size: 1rem;
+  transition: 0.25s;
+}
+
+.input-box:focus {
+  border-color: #1a7f5a;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 127, 90, 0.18);
+  outline: none;
+}
+
+/* ============================================
+   BOTÓN BUSCAR
+============================================ */
+.btn-buscar {
+  background: linear-gradient(90deg, #1a7f5a, #146b4c);
+  padding: 0.85rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-buscar:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+/* 🔥 Reducimos el espacio entre botones */
+.btn-buscar {
+  margin-bottom: 0.8rem;
+}
+
+/* ============================================
+   BOTÓN GUARDAR
+============================================ */
+.btn-guardar {
+  margin-top: 1.2rem;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(90deg, #1a7f5a, #0e513a);
+  color: white;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(90deg, #166e50, #0b4430);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   BOTÓN CERRAR — ROJO PROFESIONAL
+============================================ */
+.btn-cerrar {
+  width: 100%;
+  margin-top: 0.8rem; /* ← Ajuste del espacio */
+  padding: 1rem;
+  background: linear-gradient(90deg, #e63939, #b32020);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 4px 12px rgba(230, 57, 57, 0.25);
+}
+
+.btn-cerrar:hover {
+  background: linear-gradient(90deg, #cc2f2f, #871a1a);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   LISTA RESULTADOS
+============================================ */
+.resultados-lista {
+  background: #f8fffb;
+  border-radius: 12px;
+  border: 1px solid #d6efe2;
+  margin-top: 0.8rem;
+  padding: 0.5rem 0;
+}
+
+.resultados-lista li {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.resultados-lista li:hover {
+  background: #e8f9f1;
+}
+
+.resultados-lista li.seleccionado {
+  background: #d4f3e7;
+  font-weight: 600;
+}
+
+.sin-resultados {
+  color: #c0392b;
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   ANIMACIÓN
+============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

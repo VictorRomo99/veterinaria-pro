@@ -1,0 +1,352 @@
+.citas-container {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* HEADER */
+.citas-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #145737;
+  font-weight: 700;
+}
+
+.citas-header p {
+  margin-top: 4px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: #5c7467;
+}
+
+/* FILTROS */
+.citas-filtros {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filtro-item label {
+  font-size: 13px;
+  color: #3c5c49;
+}
+
+.filtro-item input {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #cfe8db;
+  min-width: 200px;
+}
+
+.btn-refrescar {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  background: #30c46a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 3px 10px rgba(48, 196, 106, 0.4);
+}
+
+.btn-refrescar i {
+  font-size: 14px;
+}
+
+/* LISTA DE CITAS DENTRO DE CADA COLUMNA */
+.citas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD */
+.cita-card {
+  background: #f9fffb;
+  border-radius: 12px;
+  border: 1px solid #dcefe4;
+  padding: 14px 14px 12px;
+  box-shadow: 0 2px 8px rgba(15, 111, 61, 0.08);
+}
+
+/* ARRIBA: mascota, horario, estado */
+.cita-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.cita-mascota {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 180px;
+}
+
+.cita-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #30c46a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(48, 196, 106, 0.55);
+}
+
+.cita-icon i {
+  font-size: 18px;
+}
+
+.cita-mascota-nombre {
+  font-size: 15px;
+  font-weight: 700;
+  color: #145737;
+}
+
+.cita-dueno {
+  font-size: 13px;
+  color: #4f6e5b;
+}
+
+.cita-dueno i {
+  margin-right: 4px;
+}
+
+/* horario */
+.cita-horario {
+  font-size: 13px;
+  color: #385847;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+}
+
+.cita-horario i {
+  margin-right: 4px;
+}
+
+/* estado */
+.cita-estado {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  min-width: 150px;
+}
+
+.badge-estado {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+/* Colores por estado */
+.badge-estado.pendiente {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-estado.confirmada {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-estado.cancelada {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.badge-estado.atendida {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.badge-estado.reprogramada_cliente,
+.badge-estado.postergada {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
+
+.cita-tipo {
+  font-size: 13px;
+  color: #48685a;
+}
+
+/* MOTIVO */
+.cita-motivo {
+  font-size: 13px;
+  color: #405d4b;
+  margin-top: 6px;
+}
+
+/* EXTRA INFO */
+.cita-info-extra {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #496655;
+  flex-wrap: wrap;
+}
+
+.cita-info-extra i {
+  margin-right: 4px;
+}
+
+/* BOTONES */
+.cita-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-accion {
+  border: none;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.btn-accion i {
+  font-size: 13px;
+}
+
+/* COLORES */
+.btn-confirmar {
+  background: #30c46a;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(48, 196, 106, 0.4);
+}
+
+.btn-postergar {
+  background: #ffeeba;
+  color: #856404;
+}
+
+.btn-cancelar {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-recordatorio {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+/* HOVER */
+.btn-accion:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* DISABLED */
+.btn-accion:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================
+   SECCIONES EN COLUMNAS
+   ============================ */
+
+.citas-secciones {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+/* Cada columna usa mejor el ancho disponible */
+.citas-section {
+  flex: 1;
+  min-width: 0;
+  background: #f7fbf9;
+  border-radius: 10px;
+  border: 1px solid #e4f0e8;
+  padding: 8px 10px 10px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+/* Header de cada columna */
+.citas-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* Colores por sección */
+.sec-hoy {
+  background: #2ecc71;
+}
+
+.sec-proximas {
+  background: #3498db;
+}
+
+.sec-reprogramadas {
+  background: #9b59b6;
+}
+
+.sec-canceladas {
+  background: #e74c3c;
+}
+
+.citas-section-count {
+  background: rgba(255, 255, 255, 0.18);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.citas-section-empty {
+  font-size: 13px;
+  color: #7b8a82;
+  padding: 4px 4px 6px;
+}
+
+/* Responsive: cuando la pantalla es pequeña, columnas una debajo de otra */
+@media (max-width: 1024px) {
+  .citas-secciones {
+    flex-wrap: wrap;
+  }
+
+  .citas-section {
+    flex: 1 1 100%;
+    max-height: none;
+  }
+}
+.cita-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}

@@ -1,0 +1,122 @@
+/* ================================
+   OVERLAY
+================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* ================================
+   MODAL BOX
+================================ */
+.modal-box {
+  background: #ffffff;
+  width: 420px;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  animation: slideUp 0.25s ease-out;
+  overflow-x: hidden;
+  border: 1px solid #e5e5e5;
+}
+
+.modal-title {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #2e7d4b;
+}
+
+/* ================================
+   CAMPOS DEL FORMULARIO
+================================ */
+.label {
+  font-weight: 600;
+  color: #2e5c3b;
+  font-size: 15px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.modal-box select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #cfdacf;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-box select:focus {
+  border-color: #34a853;
+  box-shadow: 0 0 4px rgba(52,168,83,0.4);
+}
+
+/* ================================
+   BOTONES
+================================ */
+.btn-save {
+  width: 100%;
+  background: #34a853;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 18px;
+  transition: background 0.2s;
+}
+
+.btn-save:hover {
+  background: #2c8d46;
+}
+
+.btn-close {
+  width: 100%;
+  background: #e74c3c;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.btn-close:hover {
+  background: #c0392b;
+}
+
+/* ================================
+   ANIMACIONES
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,215 @@
+/* ================================
+   CONTENEDOR GENERAL
+================================ */
+.layout-recepcion {
+  display: flex;
+  min-height: 100vh;
+  background: #f5faf7; /* Verde suave */
+  overflow-x: hidden; /* 🔥 Evita scroll lateral */
+}
+
+/* ================================
+   PANEL PRINCIPAL
+================================ */
+.recepcion-container {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding: 24px 32px;
+
+  /* 🔥 Se respeta el ancho del navbar */
+  margin-left: 260px;
+  box-sizing: border-box;
+
+  position: relative;
+  z-index: 1;
+}
+
+.recepcion-header {
+  margin-bottom: 25px;
+}
+
+/* ================================
+   FILTROS + SEARCH
+================================ */
+.recepcion-filtros input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfdacf;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  outline: none;
+}
+
+.recepcion-filtros input:focus {
+  border-color: #34a853;
+  box-shadow: 0 0 3px #8de0a3;
+}
+
+/* ================================
+   FILTRO DE BOLETAS
+================================ */
+.filtro-boletas-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.filtro-boletas-buttons button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #cfdacf;
+  background: #ffffff;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.filtro-boletas-buttons button.active {
+  background: #34a853;
+  border-color: #34a853;
+  color: white;
+}
+
+.filtro-boletas-buttons button:hover:not(.active) {
+  background: #e9f5ec;
+}
+
+/* ================================
+   TABLA
+================================ */
+.tabla-boletas {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-boletas th {
+  background: #e8f3eb;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #2e5c3b;
+}
+
+.tabla-boletas td {
+  padding: 12px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+/* Estados */
+.estado.pagado {
+  color: #0abf22;
+  font-weight: bold;
+}
+
+.estado.pendiente {
+  color: #d86000;
+  font-weight: bold;
+}
+
+/* Acciones */
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+/* ================================
+   BOTONES
+================================ */
+.btn-agregar {
+  background: #4ba3ff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-ver {
+  background: #2ecc71;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-pagar {
+  background: #ffb600;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-agregar:hover,
+.btn-ver:hover,
+.btn-pagar:hover {
+  opacity: 0.85;
+}
+/* ============================================================
+   ⭐ NUEVO HEADER DE BOLETAS (ESTILO PREMIUM)
+============================================================ */
+
+.boletas-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+/* Switch botones */
+.boletas-switch {
+  display: flex;
+  gap: 12px;
+}
+
+.boletas-switch button {
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #cfe3d4;
+  background: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 15px;
+  color: #2f6042;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.boletas-switch button:hover:not(.active) {
+  background: #eef8f0;
+}
+
+.boletas-switch button.active {
+  background: #34a853;
+  border-color: #34a853;
+  color: white;
+  box-shadow: 0 3px 10px rgba(52, 168, 83, 0.35);
+}
+
+/* Campo de búsqueda */
+.boletas-search input {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #d5e7d8;
+  background: #ffffff;
+  font-size: 15px;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.boletas-search input:focus {
+  outline: none;
+  border-color: #34a853;
+  background: #fafffa;
+  box-shadow: 0 0 6px rgba(52,168,83,0.4);
+}

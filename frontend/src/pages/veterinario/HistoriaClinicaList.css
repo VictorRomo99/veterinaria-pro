@@ -1,0 +1,116 @@
+/* ============================================
+   📜 LISTA DE HISTORIA CLÍNICA — ESTILO PRO
+=============================================== */
+
+.historial-container {
+  margin-top: 2rem;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.8rem;
+  border: 1px solid #e7ede7;
+}
+
+.historial-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.historial-header h4 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0c6644;
+}
+
+.filtros-historial {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filtros-historial select,
+.filtros-historial input {
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #cbd8cc;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e3efe7;
+  background: #f8fdfb;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.timeline-item:hover {
+  background: #e9f9f1;
+  transform: translateY(-2px);
+}
+
+.timeline-badge {
+  min-width: 48px;
+  height: 48px;
+  background: #c0f1d7;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #075c37;
+  font-size: 1.1rem;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.tipo-badge {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  font-weight: 700;
+  background: #d9f7e9;
+  color: #064f33;
+}
+
+.fecha {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.motivo {
+  font-weight: 700;
+  margin-top: 6px;
+  color: #134e3c;
+}
+
+.resumen {
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.badge-dosis {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 0.8rem;
+  background: #ffe0a1;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #8a5300;
+}

@@ -1,0 +1,318 @@
+/* ===== 🎨 CONTENEDOR GENERAL ===== */ 
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  background: linear-gradient(135deg, #f9fdfc 0%, #eafaf3 100%);
+  padding: 2rem;
+}
+
+/* ===== 🧾 TARJETA ===== */
+.register-card {
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  max-width: 460px;
+  width: 100%;
+  animation: fadeIn 0.4s ease;
+  border: 1px solid #ebf3ef;
+}
+
+.register-card h2 {
+  color: #2e8069;
+  text-align: center;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.register-card span {
+  color: #36b287;
+}
+
+.register-card p {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== 📋 CAMPOS DE FORMULARIO ===== */
+form input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d8e3df;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: 0.2s ease-in-out;
+  background-color: #fdfdfd;
+}
+
+form input:focus {
+  border-color: #2dc285;
+  box-shadow: 0 0 5px rgba(45, 194, 133, 0.25);
+  outline: none;
+}
+
+/* ===== 🔍 FILA DNI + BOTÓN ===== */
+.dni-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.dni-row input {
+  flex: 1;
+}
+
+/* ===== 🟢 BOTÓN BUSCAR ===== */
+.btn-buscar-dni {
+  background: linear-gradient(135deg, #2dc285, #23a06c);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 110px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(35, 160, 108, 0.3);
+}
+
+.btn-buscar-dni:hover {
+  background: #1f6a4e;
+  transform: scale(1.03);
+}
+
+.btn-buscar-dni:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== 📘 CAMPOS NOMBRE Y APELLIDO ===== */
+.form-group {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.form-group input[readonly] {
+  background: #f4f9f7;
+  border-color: #d0e7da;
+  color: #2e4f3d;
+  font-weight: 500;
+  cursor: not-allowed;
+}
+
+/* ===== ⚠️ AVISO MENOR ===== */
+.aviso-menor {
+  background-color: #fff9e6;
+  color: #a46300;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid #ffe8b3;
+  box-shadow: 0 2px 5px rgba(255, 200, 100, 0.2);
+  animation: fadeIn 0.4s ease-in;
+}
+
+/* ===== 📇 INFO TUTOR ===== */
+.tutor-info {
+  background: #eaf8f1;
+  color: #146b47;
+  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c3e7d1;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* ===== 🔘 BOTÓN PRINCIPAL ===== */
+button[type="submit"] {
+  width: 100%;
+  background: linear-gradient(135deg, #2dc285, #23a06c);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  margin-top: 0.8rem;
+  box-shadow: 0 4px 10px rgba(45, 194, 133, 0.4);
+}
+
+button[type="submit"]:hover {
+  background: #1f6a4e;
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== ✅ MENSAJES ===== */
+.error {
+  background-color: #ffecec;
+  color: #a30000;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ffb3b3;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.success {
+  background-color: #e6fff0;
+  color: #007a3d;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #a4e7c4;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ===== 🔗 ENLACE LOGIN ===== */
+.register-text {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.register-link {
+  color: #2dc285;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.register-link:hover {
+  color: #1f6a4e;
+  text-decoration: underline;
+}
+
+/* ===== 📱 CAMPOS EXTRA ===== */
+input[name="celular"],
+input[name="direccion"] {
+  background: #fdfdfd;
+  border-color: #d8e3df;
+}
+
+/* ===== 🧾 CHECKBOXES DE POLÍTICAS ===== */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  background: #f9fefc;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e2f3ea;
+}
+
+.checkbox-group label {
+  font-size: 0.9rem;
+  color: #2e4f3d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  accent-color: #2dc285;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ===== 👩‍👦 SECCIÓN TUTOR MENOR ===== */
+.menor-section {
+  margin-top: 1rem;
+  background: #fffdf3;
+  border: 1px solid #ffe8b3;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255, 215, 100, 0.2);
+  animation: fadeIn 0.4s ease;
+}
+
+/* ===== ✨ ANIMACIÓN ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === FIX TAMAÑO DEL CAMPO DNI === */
+.dni-row input[name="dni"] {
+  flex: 2;
+  min-width: 200px;
+}
+
+.legal-link {
+  color: #1f8a6e;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+  color: #15775f;
+}
+
+.checkbox-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkbox-item .legal-link {
+  margin-left: 28px; /* alineado debajo del texto */
+}
+
+/* ===== 👁‍🗨 PASSWORD CON OJO ===== */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 45px; /* espacio para el ojito */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #2dc285;
+  transition: 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: #1f6a4e;
+}
+
+/* 🔥 FIX: cuando el input está en type="text", mostrar caracteres normales */
+.password-wrapper input[type="text"] {
+  -webkit-text-security: none !important;
+  font-family: inherit !important;
+}

@@ -1,0 +1,66 @@
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.equipo-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.equipo-card:hover {
+  transform: translateY(-5px);
+}
+
+.equipo-foto {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #5bcc8f;
+  margin-bottom: 20px;
+}
+
+.equipo-info h3 {
+  font-size: 20px;
+  color: #1e3a34;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.equipo-especialidad {
+  font-size: 15px;
+  color: #0aa56e;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.equipo-descripcion {
+  font-size: 14px;
+  color: #4b6b62;
+  line-height: 1.5;
+}
+.equipo-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.equipo-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1e3a34;
+  margin-bottom: 10px;
+}
+
+.equipo-subtitle {
+  font-size: 18px;
+  color: #4b6b62;
+  margin-bottom: 40px;
+}

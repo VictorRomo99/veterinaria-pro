@@ -1,0 +1,128 @@
+/* =============================
+   CONTENEDOR PRINCIPAL
+============================= */
+.panel-productos {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-productos h2 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #145737;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =============================
+   FORMULARIO
+============================= */
+.form-producto {
+  background: #f9fffb;
+  border: 1px solid #dcefe4;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.form-producto input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cfe8db;
+  font-size: 15px;
+  background: #ffffff;
+}
+
+/* =============================
+   BOTÓN GUARDAR
+============================= */
+.btn-save {
+  grid-column: 1 / span 4;
+  padding: 12px;
+  background: #30c46a;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(48,196,106,0.35);
+  transition: 0.12s;
+}
+
+.btn-save:hover {
+  transform: translateY(-1px);
+}
+
+/* =============================
+   TABLA DE PRODUCTOS
+============================= */
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tabla-productos thead {
+  background: #30c46a;
+  color: white;
+}
+
+.tabla-productos th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tabla-productos td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 14px;
+}
+
+.tabla-productos tr:hover {
+  background: #f4fdf6;
+}
+
+/* =============================
+   BOTONES DE ACCIÓN
+============================= */
+.tabla-productos button {
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 4px;
+  transition: 0.12s;
+}
+
+.tabla-productos button:hover {
+  transform: scale(1.2);
+}
+
+/* Editar */
+.tabla-productos button:nth-child(1) {
+  color: #3498db;
+}
+
+/* Eliminar */
+.tabla-productos button:nth-child(2) {
+  color: #e74c3c;
+}

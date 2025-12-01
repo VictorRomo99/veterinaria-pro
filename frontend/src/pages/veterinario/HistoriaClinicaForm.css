@@ -1,0 +1,157 @@
+/* ============================================
+   🩺 FORMULARIO CLÍNICO — PREMIUM UX (AISLADO)
+=============================================== */
+
+/* CONTENEDOR */
+.form-historia {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e3eee5;
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* TÍTULO */
+.form-historia .section-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #055f3c;
+  margin-bottom: 1.2rem;
+}
+
+/* SECCIONES */
+.form-historia .seccion {
+  background: #f3faf4;
+  border: 1px solid #dbece0;
+  border-radius: 14px;
+  padding: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+/* HEADER */
+.form-historia .seccion h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e6f4e9;
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #cbe2d1;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #064c33;
+  cursor: pointer;
+  margin-bottom: 1.6rem;
+}
+
+.form-historia .seccion h4 span.open {
+  transform: rotate(90deg);
+}
+
+/* FILAS */
+.form-historia .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+/* LABEL */
+.form-historia .form-row label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f3f2e;
+}
+
+/* INPUTS */
+.form-historia input,
+.form-historia select,
+.form-historia textarea {
+  border: 1px solid #cbdcd0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  background: white;
+  transition: 0.2s ease;
+}
+
+/* TEXTAREAS NATURALES — SIN ALTURA FIJA */
+.form-historia textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* FOCUS */
+.form-historia input:focus,
+.form-historia textarea:focus,
+.form-historia select:focus {
+  border-color: #0aa06d;
+  box-shadow: 0 0 0 2px rgba(0, 160, 106, 0.25);
+  outline: none;
+}
+
+/* GRIDS */
+.form-historia .grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-historia .grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* FILAS COMPACTAS */
+.form-historia .fila-compacta {
+  max-width: 600px;
+}
+
+/* TOTAL */
+.form-historia .total-precio input {
+  max-width: 260px;
+}
+
+/* TARJETA TOTAL */
+.form-historia .tarjeta-total {
+  background: #f6fff9;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #d5f0dd;
+  text-align: center;
+  color: #055f3c;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* BOTÓN */
+.form-historia .btn-guardar {
+  width: 100%;
+  padding: 1.15rem;
+  background: #00a06a;
+  border-radius: 12px;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.form-historia .btn-guardar:hover {
+  background: #008d5e;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .form-historia .grid-2,
+  .form-historia .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

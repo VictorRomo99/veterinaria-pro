@@ -1,0 +1,67 @@
+/* Fondo general verde suave */
+.caja-admin-container {
+  background-color: #f3fdf7;
+  min-height: 100vh;
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Título */
+.caja-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f6a4e;
+  margin-bottom: 20px;
+}
+
+/* Card blanca */
+.caja-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* Tabla */
+.caja-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.caja-table th {
+  background: #e5f7ed;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #1f6a4e;
+}
+
+.caja-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddeee4;
+}
+
+/* Colores según tipo */
+.ingreso {
+  color: #0f7a41;
+  font-weight: 600;
+}
+
+.egreso {
+  color: #b01a1a;
+  font-weight: 600;
+}
+
+/* Loading */
+.caja-loading {
+  font-size: 18px;
+  color: #1f6a4e;
+}
+
+/* Empty */
+.caja-empty {
+  font-size: 16px;
+  color: #444;
+  padding: 10px 0;
+}

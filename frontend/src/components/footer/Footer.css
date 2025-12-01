@@ -1,0 +1,61 @@
+.footer {
+  background: linear-gradient(90deg, #b9f3d2 0%, #a8edea 100%);
+  padding: 1.2rem 1rem;
+  color: #1f3d32;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Redes sociales */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.social-icon {
+  font-size: 1.4rem;
+  color: #1f6a4e;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #2dc285;
+  transform: translateY(-3px);
+}
+
+/* Enlaces legales */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #1f3d32;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #1f3d32;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #2dc285;
+  text-decoration: underline;
+}
+
+/* Copyright */
+.footer-copy {
+  font-size: 0.85rem;
+  color: #2b5345;
+  opacity: 0.8;
+}

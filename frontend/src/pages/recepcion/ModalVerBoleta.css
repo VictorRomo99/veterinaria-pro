@@ -1,0 +1,224 @@
+/* ==========================================
+   OVERLAY
+========================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* ==========================================
+   CONTENEDOR DEL MODAL
+========================================== */
+.modal-boleta {
+  background: #ffffff;
+  width: 620px;
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  animation: slideUp 0.25s ease-out;
+  border: 1px solid #e8e8e8;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 700;
+  color: #2b8a3e;
+}
+
+/* Botón pequeño — NO barra larga */
+.cerrar-x {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: auto; /* 🔥 evita barra gigante */
+}
+
+.cerrar-x:hover {
+  background: #c0392b;
+}
+
+/* ==========================================
+   INFORMACIÓN PRINCIPAL
+========================================== */
+.boleta-info p {
+  font-size: 15px;
+  margin: 6px 0;
+  color: #333;
+}
+
+.estado-pagado { color: #1e8f3f; font-weight: 700; }
+.estado-pendiente { color: #e67e22; font-weight: 700; }
+.estado-anulado { color: #c0392b; font-weight: 700; }
+
+/* ==========================================
+   SERVICIO
+========================================== */
+.servicio-box {
+  background: #eefcf0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border-left: 5px solid #2b8a3e;
+  margin-bottom: 12px;
+}
+
+.servicio-total {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1f7e33;
+}
+
+/* ==========================================
+   PRODUCTOS
+========================================== */
+.titulo-productos {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2b8a3e;
+}
+
+.tabla-detalles {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-detalles thead {
+  background: #2b8a3e;
+  color: #fff;
+}
+
+.tabla-detalles th,
+.tabla-detalles td {
+  padding: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+
+.tabla-detalles tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.tabla-detalles tbody tr:hover {
+  background: #eefcef;
+}
+
+/* ==========================================
+   TOTALES
+========================================== */
+.totales-container {
+  margin-top: 20px;
+}
+
+.total-final {
+  margin-top: 5px;
+  background: #e8fbe8;
+  padding: 12px;
+  border-radius: 10px;
+  color: #1f7e33;
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* ==========================================
+   BOTONES DEL MODAL
+========================================== */
+.modal-buttons {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-cerrar {
+  background: #e74c3c;
+  padding: 12px 20px;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cerrar:hover { background: #c0392b; }
+
+.btn-imprimir {
+  background: #27ae60;
+  padding: 12px 20px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-imprimir:hover { background: #1e8449; }
+
+.btn-pdf {
+  background: #2d87ff;
+  padding: 12px 20px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-pdf:hover { background: #1f66cc; }
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   PRINT
+========================================== */
+@media print {
+  .cerrar-x,
+  .btn-cerrar,
+  .btn-pdf {
+    display: none !important;
+  }
+}
+

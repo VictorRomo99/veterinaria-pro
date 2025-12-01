@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Build
+frontend/dist/
+
+# Env files
+.env
+backend/.env
+frontend/.env
+
+# Uploads locales
+backend/uploads/
+
+# Misc
+.DS_Store
+.vscode/

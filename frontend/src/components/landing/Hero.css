@@ -1,0 +1,84 @@
+.hero-section {
+  background: radial-gradient(circle at 20% 30%, #ffffff 0%, #dffff2 60%, #b9f3d2 100%);
+  padding: 5rem 1rem 4rem;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #1f3d32;
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 1vw + 2rem, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #144c36;
+  background: linear-gradient(90deg, #144c36 0%, #2dc285 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.2rem;
+}
+
+.hero-text {
+  max-width: 600px;
+  margin: 0 auto 2.4rem;
+  color: #2f4f46;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* 🎯 BOTONES */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 0.65rem 1.6rem; /* tamaño estándar */
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+
+/* BOTÓN VER SERVICIOS */
+.btn-primary {
+  background: #2dc285;
+  color: #fff;
+  box-shadow: 0 4px 12px rgb(45 194 133 / 0.35);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1f6a4e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(31 106 78 / 0.35);
+}
+
+/* BOTÓN AGENDAR CITA */
+.btn-outline {
+  background: #ffffff;
+  border: 2px solid #1f6a4e;
+  color: #1f6a4e;
+}
+
+.btn-outline:hover {
+  background: #1f6a4e;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(31 106 78 / 0.35);
+}
+/* 🔒 Forzar ancho correcto SOLO para botones del Hero */
+.hero-actions button {
+  width: auto !important;
+  min-width: 160px;
+}

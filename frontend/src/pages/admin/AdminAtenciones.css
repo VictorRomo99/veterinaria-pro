@@ -1,0 +1,65 @@
+/* Fondo verde suave clínico */
+.admin-page {
+  background-color: #f3fdf7;
+  min-height: 100vh;
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Título */
+.admin-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f6a4e;
+  margin-bottom: 25px;
+}
+
+/* Loading */
+.admin-loading {
+  font-size: 18px;
+  color: #1f6a4e;
+}
+
+/* Tarjeta contenedora */
+.admin-box {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+/* Número grande */
+.admin-number {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1f6a4e;
+  margin: 10px 0;
+}
+
+/* Tabla */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.admin-table th {
+  background: #e5f7ed;
+  padding: 12px;
+  text-align: left;
+  color: #1f6a4e;
+  font-weight: 600;
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddeee4;
+}
+
+/* No hay registros */
+.admin-empty {
+  color: #555;
+  font-size: 15px;
+  padding: 10px 0;
+}

@@ -1,0 +1,129 @@
+/* ---------------------------------------------------
+   CONTENEDOR PRINCIPAL
+--------------------------------------------------- */
+.noti-container {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e4f4ea;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------
+   BOTÓN "MARCAR TODAS"
+--------------------------------------------------- */
+.noti-btn-all {
+  display: inline-flex;
+  padding: 6px 14px;
+  background: #28c48b;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  margin-left: 10px;
+  box-shadow: 0 2px 8px rgba(30, 168, 118, 0.25);
+  transition: 0.2s ease;
+  width: auto !important;
+}
+
+.noti-btn-all:hover {
+  background: #1ea877;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------
+   LISTA
+--------------------------------------------------- */
+.noti-list {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------------------------------------------------
+   ÍTEM DE NOTIFICACIÓN
+--------------------------------------------------- */
+.noti-item {
+  background: #f3fff8;
+  border-left: 6px solid #2fc36c;
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.noti-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+
+/* ÍTEM LEÍDA */
+.noti-item.leida {
+  background: #f0f0f0;
+  border-left-color: #b1b1b1;
+  opacity: 0.85;
+}
+
+/* ---------------------------------------------------
+   TEXTOS
+--------------------------------------------------- */
+.noti-info strong {
+  font-size: 15px;
+  color: #157f4b;
+  font-weight: 700;
+}
+
+.noti-info p {
+  margin-top: 3px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* ---------------------------------------------------
+   BOTÓN INDIVIDUAL (compacto REAL)
+--------------------------------------------------- */
+.noti-btn {
+  background: #2fc36c;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  width: auto !important;
+  flex-shrink: 0; /* evita que se estire */
+  box-shadow: 0 2px 8px rgba(47, 195, 108, 0.25);
+  transition: 0.2s ease;
+}
+
+.noti-btn:hover {
+  background: #26a85c;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------
+   SIN NOTIFICACIONES
+--------------------------------------------------- */
+.noti-empty {
+  font-style: italic;
+  color: #666;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 15px;
+}

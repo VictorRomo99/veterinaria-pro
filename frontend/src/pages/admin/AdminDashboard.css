@@ -1,0 +1,44 @@
+.dashboard-admin-container {
+  background-color: #f3fdf7;
+  min-height: 100vh;
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.dashboard-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f6a4e;
+  margin-bottom: 25px;
+}
+
+.dashboard-loading {
+  font-size: 18px;
+  color: #1f6a4e;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.dash-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+}
+
+.dash-number {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1f6a4e;
+  margin-top: 10px;
+}

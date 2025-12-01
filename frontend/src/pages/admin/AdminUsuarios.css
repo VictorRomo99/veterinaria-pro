@@ -1,0 +1,210 @@
+/* ============================
+   CONTENEDOR GENERAL PREMIUM
+============================ */
+.admin-card {
+  background: linear-gradient(180deg, #f6fcf8 0%, #eff7f2 100%);
+  min-height: 100vh;
+  padding: 40px 60px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ============================
+   TÍTULO PRINCIPAL
+============================ */
+.admin-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #145c44;
+  margin-bottom: 25px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-shadow: 0px 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ============================
+   BUSCADOR + FILTROS
+============================ */
+.usuarios-filtros {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.input-busqueda {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 1px solid #c7e3d4;
+  background: #ffffff;
+  font-size: 15px;
+  transition: 0.25s ease-in-out;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.05);
+}
+
+.input-busqueda:focus {
+  border-color: #1f6a4e;
+  box-shadow: 0px 4px 12px rgba(31, 106, 78, 0.25);
+}
+
+/* ============================
+   SELECT FILTROS
+============================ */
+.filtro-select {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #c7e3d4;
+  background: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.filtro-select:hover,
+.filtro-select:focus {
+  border-color: #1f6a4e;
+}
+
+/* ============================
+   TABLA ULTRA PREMIUM (COLOR SUAVE)
+============================ */
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 18px;
+  background: rgba(226, 244, 235, 0.55); /* verde pastel suave */
+  padding: 10px;
+  border-radius: 18px;
+  backdrop-filter: blur(4px);
+}
+
+/* ENCABEZADOS */
+.admin-table th {
+  background: rgba(208, 238, 224, 0.85);
+  padding: 18px 14px;
+  color: #145c44;
+  font-weight: 700;
+  border-radius: 14px;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* FILAS */
+.admin-table tr {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+}
+
+.admin-table tr:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.admin-table td {
+  padding: 20px 16px;
+  font-size: 15px;
+  color: #2d2d2d;
+}
+
+/* ============================
+   AVATAR PREMIUM
+============================ */
+.col-usuario {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: #1f6a4e;
+  border-radius: 50%;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    0px 4px 8px rgba(0,0,0,0.12),
+    inset 0px 0px 6px rgba(255,255,255,0.35);
+  border: 2px solid #e8f6f0;
+}
+
+/* ============================
+   SELECT ROL
+============================ */
+.select-rol {
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid #cfe7dd;
+  background: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.select-rol:hover {
+  border-color: #1f6a4e;
+}
+
+/* ============================
+   BADGES ESTADO
+============================ */
+.estado-badge {
+  padding: 8px 17px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.estado-badge.activo {
+  background: linear-gradient(135deg, #cbf7e2, #b3eacc);
+  color: #0b6b39;
+}
+
+.estado-badge.inactivo {
+  background: linear-gradient(135deg, #ffd6d6, #ffbcbc);
+  color: #b01212;
+}
+
+/* ============================
+   BOTONES
+============================ */
+.btn-activar,
+.btn-inactivar {
+  padding: 12px 22px;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  color: white;
+  font-size: 15px;
+  transition: 0.22s ease;
+}
+
+.btn-activar {
+  background: linear-gradient(135deg, #1f6a4e, #29ad71);
+}
+
+.btn-inactivar {
+  background: linear-gradient(135deg, #d64540, #b9302c);
+}
+
+/* ============================
+   MENSAJE VACÍO
+============================ */
+.empty-msg {
+  padding: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+}
+

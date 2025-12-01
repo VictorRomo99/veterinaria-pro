@@ -1,0 +1,159 @@
+/* ============================
+   RESET SEGURO SOLO PARA LOGIN
+============================ */
+.login-page *,
+.login-page *::before,
+.login-page *::after {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ============================
+   CONTENEDOR
+============================ */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px);
+  background: linear-gradient(135deg, #b9f3d2 0%, #a8edea 100%);
+  padding: 1rem;
+}
+
+/* ============================
+   TARJETA
+============================ */
+.login-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2.8rem 2.2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba(31, 106, 78, 0.15);
+  text-align: center;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* TITULOS */
+.login-card h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #145c4d;
+  margin-bottom: 0.4rem;
+}
+
+.login-card h2 span {
+  background: linear-gradient(90deg, #1f6a4e, #28a4c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* TEXTOS */
+.login-card p {
+  color: #3b5b4d;
+  margin-bottom: 1rem;
+}
+
+/* INPUTS */
+.login-card input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1.8px solid #cdeedf;
+  border-radius: 12px;
+  background: #f9fffc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #145c4d;
+}
+
+.login-card input:focus {
+  border-color: #28a4c7;
+  outline: none;
+  box-shadow: 0 0 5px rgba(40, 164, 199, 0.25);
+}
+
+/* ============================
+   OJO DEL PASSWORD
+============================ */
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #1f6a4e;
+}
+
+.password-toggle:hover {
+  color: #28a4c7;
+}
+
+/* BOTONES */
+.login-card button {
+  width: 100%;
+  background: linear-gradient(90deg, #2dc285, #1f6a4e);
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  transition: 0.25s;
+}
+
+.login-card button:hover {
+  transform: translateY(-2px);
+}
+
+/* LINKS */
+.forgot-link,
+.register-link {
+  color: #28a4c7;
+  font-weight: 600;
+}
+
+/* ERROR */
+.error {
+  background: rgba(255, 0, 0, 0.07);
+  color: #c0392b;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-password {
+  padding-right: 3rem !important;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #1f6a4e;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: #28a4c7;
+}
+

@@ -1,0 +1,75 @@
+/* ============================
+   SECCIÓN — SERVICIOS DESTACADOS
+=============================== */
+
+.servicios-section {
+  padding: 4rem 1rem;
+  background: #f7fffb; /* verde muy suave */
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.servicios-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #144c36;
+  margin-bottom: 0.4rem;
+
+  background: linear-gradient(90deg, #144c36 0%, #2dc285 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.servicios-subtitle {
+  color: #2f4f46;
+  opacity: 0.85;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.servicios-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.3rem;
+}
+
+/* Tarjetas */
+.servicio-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  min-height: 160px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.servicio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  border-color: #2dc285;
+}
+
+.servicio-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.servicio-title {
+  font-weight: 700;
+  color: #144c36;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.servicio-desc {
+  font-size: 0.9rem;
+  color: #2f4f46;
+  opacity: 0.85;
+  line-height: 1.45;
+}

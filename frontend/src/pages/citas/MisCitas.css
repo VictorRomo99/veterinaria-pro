@@ -1,0 +1,110 @@
+.mc-container {
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.mc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.mc-refresh {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2dc285;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mc-skel,
+.mc-empty {
+  background: #ffffffcc;
+  border: 1px solid #e9eef2;
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+}
+
+.mc-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #2dc285;
+  font-weight: 600;
+}
+
+.mc-table-wrap {
+  background: #fff;
+  border: 1px solid #e9eef2;
+  border-radius: 16px;
+  overflow-x: auto;
+}
+
+.mc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mc-table th, .mc-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eef2f6;
+  text-align: left;
+  font-size: 14px;
+}
+
+.mc-table th {
+  background: #f7fafb;
+  font-weight: 700;
+}
+
+.mc-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+}
+.mc-badge.pres { background: #eafaf2; color: #1b8a5a; }
+.mc-badge.dom  { background: #fff2e6; color: #b05e07; }
+
+.mc-comment { max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.mc-actions { text-align: right; }
+.mc-cancel {
+  padding: 8px 12px;
+  border: 1px solid #ffcbc7;
+  color: #d23c2f;
+  background: #fff5f5;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.mc-cancel:hover { background: #ffe9e7; }
+.mc-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.mc-edit {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mc-edit:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+/* === Evitar que el footer se pegue en páginas con poco contenido === */
+.mc-page-wrapper {
+  min-height: calc(100vh - 200px); /* altura visible menos navbar + footer */
+  padding-bottom: 40px; /* espacio para respirar */
+}

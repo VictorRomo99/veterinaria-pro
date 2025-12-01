@@ -1,0 +1,68 @@
+.config-admin-container {
+  background-color: #f3fdf7;
+  min-height: 100vh;
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.config-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f6a4e;
+  margin-bottom: 25px;
+}
+
+.config-loading {
+  font-size: 18px;
+  color: #1f6a4e;
+}
+
+.config-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  max-width: 600px;
+}
+
+.config-group {
+  margin-bottom: 20px;
+}
+
+.config-group label {
+  font-weight: 600;
+  color: #1f6a4e;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.config-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #bcd6ca;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.config-group input:focus {
+  border-color: #1f6a4e;
+}
+
+.config-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #1f6a4e;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-weight: 600;
+}
+
+.config-btn:hover {
+  background-color: #17523d;
+}

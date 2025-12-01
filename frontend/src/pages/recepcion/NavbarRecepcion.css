@@ -1,0 +1,159 @@
+/* -------------------------------------
+   SIDEBAR PRINCIPAL
+------------------------------------- */
+.nav-rx {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: #e9fff1;
+  border-right: 1px solid #cfeede;
+  padding: 20px 18px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+/* -------------------------------------
+   LOGO + TITULO
+------------------------------------- */
+.nav-rx-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-rx-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #30c46a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 22px;
+}
+
+.nav-rx-title .main {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0d5c32;
+}
+
+.nav-rx-title .sub {
+  font-size: 12px;
+  color: #3a7d56;
+}
+
+/* -------------------------------------
+   USUARIO
+------------------------------------- */
+.nav-rx-user {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #d9f3e7;
+}
+
+.nav-rx-user .hi {
+  font-size: 13px;
+  color: #244b35;
+  margin-bottom: 4px;
+}
+
+.nav-rx-user .name {
+  font-weight: 700;
+  color: #138f44;
+}
+
+.nav-rx-user .email {
+  font-size: 12px;
+  color: #6c7e72;
+}
+
+/* -------------------------------------
+   MENÚ
+------------------------------------- */
+.nav-rx-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.nav-rx-item {
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #204a33;
+  transition: 0.15s ease;
+}
+
+.nav-rx-item:hover {
+  background: #dbf7e7;
+}
+
+.nav-rx-item.active {
+  background: #2fc161;
+  color: white;
+  box-shadow: 0 3px 10px rgba(47,193,97,0.4);
+}
+
+.nav-rx-item.active .nav-rx-icon {
+  color: white;
+}
+
+.nav-rx-icon {
+  font-size: 17px;
+  width: 22px;
+  text-align: center;
+  color: #2a6b46;
+}
+
+/* Badge de notificaciones */
+.badge {
+  background: #ff4d4d;
+  color: white;
+  font-size: 12px;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+/* -------------------------------------
+   PIE DEL NAVBAR
+------------------------------------- */
+.nav-rx-bottom {
+  padding-top: 10px;
+  border-top: 1px solid #caecd9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logout {
+  background: #ffe3e3 !important;
+  color: #b43636 !important;
+}
+
+.logout:hover {
+  background: #ffcdcd !important;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .nav-rx {
+    width: 220px;
+    min-width: 220px;
+  }
+}

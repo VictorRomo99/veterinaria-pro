@@ -1,0 +1,79 @@
+/* ===== NAVBAR VERTICAL FIJO ===== */
+.navbar-vet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #23a86a;
+  padding: 2rem 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-right: 4px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.nav-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.nav-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Caja del usuario */
+.vet-userbox {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.vet-user-icon {
+  font-size: 2rem;
+}
+
+.vet-rol {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.vet-name {
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Botones */
+.nav-btn {
+  background: #dff8ee;
+  color: #145a3c;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-btn:hover {
+  background: #cfe9dc;
+  transform: translateY(-2px);
+}
+
+/* Logout */
+.logout {
+  margin-top: auto;
+  background: #ff6b5e;
+  color: white;
+}
+
+.logout:hover {
+  background: #e1554a;
+}

@@ -1,0 +1,385 @@
+/* ==========================================================
+   CONTENEDOR GENERAL
+========================================================== */
+.caja-container {
+  padding: 25px;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.caja-container h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2b8a3e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ==========================================================
+   DASHBOARD SUPERIOR POS
+========================================================== */
+.caja-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-card .card-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.dashboard-card .card-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f6a29;
+  margin-bottom: 6px;
+}
+
+.dashboard-card .card-sub {
+  font-size: 13px;
+  color: #8a8a8a;
+}
+
+.card-total-dia {
+  border-left: 4px solid #28a745;
+}
+
+.card-servicios {
+  border-left: 4px solid #17a2b8;
+}
+
+.card-productos {
+  border-left: 4px solid #ffc107;
+}
+
+.card-metodos {
+  border-left: 4px solid #6f42c1;
+}
+
+.card-metodos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* ==========================================================
+   TARJETAS / PANELS
+========================================================== */
+.panel-abrir,
+.panel-caja,
+.panel-movimientos,
+.panel-cierre,
+.panel-cerrada,
+.panel-resumen-metodos,
+.panel-movimientos-lista {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Titulares de paneles */
+.panel-caja h3,
+.panel-movimientos h3,
+.panel-cierre h3,
+.panel-resumen-metodos h3,
+.panel-movimientos-lista h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #2b8a3e;
+  font-weight: 600;
+  padding-left: 10px;
+  border-left: 4px solid #2b8a3e;
+}
+
+.panel-caja p {
+  font-size: 16px;
+  margin: 4px 0;
+  color: #333;
+}
+
+.subtitulo-panel {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2b8a3e;
+}
+
+/* Estado visual */
+.badge-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.badge-estado.abierta {
+  background: #e6f9ee;
+  color: #1e8f4d;
+  border: 1px solid #bfe8cf;
+}
+
+.badge-estado.cerrada {
+  background: #fde8e6;
+  color: #c0392b;
+  border: 1px solid #f3b2ab;
+}
+
+/* Total final */
+.total-final {
+  margin-top: 18px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f1fdf3;
+  border: 1px solid #c7ebce;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f6a29;
+}
+
+/* ==========================================================
+   BOTONES
+========================================================== */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease all;
+}
+
+/* Abrir caja */
+.btn-abrir {
+  background: #2ecc71;
+  color: #fff;
+}
+.btn-abrir:hover {
+  background: #27ae60;
+}
+
+/* Ingreso */
+.btn-ingreso {
+  background: #16a085;
+  color: #fff;
+}
+.btn-ingreso:hover {
+  background: #0f7a63;
+}
+
+/* Gasto */
+.btn-gasto {
+  background: #e67e22;
+  color: #fff;
+}
+.btn-gasto:hover {
+  background: #cf6d17;
+}
+
+/* Cerrar caja */
+.btn-cerrar {
+  background: #e74c3c;
+  color: #fff;
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  margin-top: 12px;
+}
+.btn-cerrar:hover {
+  background: #c0392b;
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #cfcfcf;
+  margin-bottom: 18px;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #27ae60;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.4);
+}
+
+/* Botones lado a lado */
+.btns-mov {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+/* ==========================================================
+   PANEL CERRADA
+========================================================== */
+.panel-cerrada {
+  text-align: center;
+  border-left: 4px solid #e74c3c;
+}
+
+.panel-cerrada h3 {
+  color: #e74c3c;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================
+   BADGES GENERALES (tipo, categoría, método)
+========================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Tipo */
+.badge-tipo-ingreso {
+  background: #e6f9ee;
+  color: #1e8f4d;
+  border: 1px solid #bfe8cf;
+}
+.badge-tipo-gasto {
+  background: #fde8e6;
+  color: #c0392b;
+  border: 1px solid #f3b2ab;
+}
+
+/* Categoría */
+.badge-cat {
+  background: #eef2ff;
+  color: #4b5bdc;
+  border: 1px solid #c9d0ff;
+}
+
+/* Métodos de pago */
+.badge-metodo-efectivo {
+  background: #e6f9ee;
+  color: #1e8f4d;
+  border: 1px solid #bfe8cf;
+}
+.badge-metodo-tarjeta {
+  background: #e7f0ff;
+  color: #2563eb;
+  border: 1px solid #c1d4ff;
+}
+.badge-metodo-yape {
+  background: #f6e9ff;
+  color: #7e22ce;
+  border: 1px solid #dec2ff;
+}
+.badge-metodo-plin {
+  background: #e0f7ff;
+  color: #0284c7;
+  border: 1px solid #b3e6ff;
+}
+
+/* ==========================================================
+   RESUMEN POR MÉTODO
+========================================================== */
+.panel-resumen-metodos ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.panel-resumen-metodos li {
+  font-size: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-resumen-metodos li:last-child {
+  border-bottom: none;
+}
+
+.metodo-monto {
+  font-weight: 600;
+  color: #1f6a29;
+}
+
+/* ==========================================================
+   TABLA DE MOVIMIENTOS
+========================================================== */
+.tabla-movimientos-caja {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.tabla-movimientos-caja thead {
+  background: #2b8a3e;
+  color: white;
+}
+
+.tabla-movimientos-caja th {
+  padding: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.tabla-movimientos-caja th.col-monto {
+  text-align: right;
+}
+
+.tabla-movimientos-caja td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* Alternancia */
+.tabla-movimientos-caja tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* Hover profesional */
+.tabla-movimientos-caja tbody tr:hover {
+  background: #eefcef;
+}
+
+/* Monto alineado derecha */
+.texto-monto {
+  text-align: right;
+  font-weight: 600;
+  color: #1f6a29;
+}
+
+.tabla-movimientos-caja td:nth-child(1) {
+  width: 140px;
+}

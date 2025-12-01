@@ -1,0 +1,242 @@
+/* ============================================
+   CONTENEDOR PRINCIPAL
+============================================ */
+.usuarios-container {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   HEADER
+============================================ */
+.usuarios-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #145737;
+}
+
+.usuarios-header p {
+  margin: 4px 0 16px;
+  font-size: 13px;
+  color: #5c7467;
+}
+
+/* ============================================
+   BUSCADOR DNI
+============================================ */
+.usuarios-buscar {
+  background: #f8fff9;
+  border: 1px solid #dcefe4;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.usuarios-buscar label {
+  font-size: 13px;
+  color: #3c5c49;
+}
+
+.usuarios-buscar-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.usuarios-buscar-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cfe8db;
+  font-size: 14px;
+}
+
+.btn-buscar-dni {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #30c46a;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(48, 196, 106, 0.4);
+  transition: 0.1s ease;
+}
+
+.btn-buscar-dni:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn-buscar-dni:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   FORMULARIO
+============================================ */
+.usuarios-form {
+  background: #f9fffb;
+  border: 1px solid #dcefe4;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.usuarios-form-header h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #145737;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.usuarios-form-subtitle {
+  font-size: 12px;
+  color: #7b8a82;
+}
+
+/* GRID */
+.usuarios-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  font-size: 13px;
+  color: #3c5c49;
+}
+
+.field input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cfe8db;
+  font-size: 14px;
+  background: #ffffff;
+}
+
+/* Dirección ocupa toda la fila */
+.field-full {
+  grid-column: 1 / span 3;
+}
+
+/* ============================================
+   BOTÓN GUARDAR
+============================================ */
+.btn-guardar-cliente {
+  margin-top: 18px;
+  padding: 12px 18px;
+  background: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(46, 134, 222, 0.35);
+  transition: 0.15s;
+}
+
+.btn-guardar-cliente:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn-guardar-cliente:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* Caja del input DNI con icono */
+.dni-input-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cfe8db;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 48px; /* 🔥 MÁS GRANDE */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.dni-input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  padding-left: 10px;
+  background: transparent;
+}
+
+.dni-icon {
+  font-size: 20px;      /* 🔥 ICONO GRANDE */
+  color: #2e7d32;
+}
+
+/* Botón Buscar más pequeño */
+.btn-buscar-dni {
+  width: 150px;         /* 🔥 REDUCIDO */
+  height: 48px;         /* mismo alto que el input */
+}
+/* ICONO DNI */
+.dni-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #cfe8db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #3c5c49;
+}
+
+/* INPUT MÁS GRANDE */
+.dni-input {
+  flex: 1;
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #cfe8db;
+  outline: none;
+  font-size: 15px;
+  background: #ffffff;
+}
+
+/* BOTÓN NORMAL, NO EXAGERADO */
+.btn-buscar-dni {
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: #30c46a;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-buscar-dni:hover:not(:disabled) {
+  background: #28a95a;
+}

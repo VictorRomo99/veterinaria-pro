@@ -1,0 +1,40 @@
+/* ==== LAYOUT GENERAL ==== */
+.admin-layout {
+  display: flex;
+  height: 100vh; /* Sidebar fijo y contenido con scroll */
+  width: 100%;
+  overflow: hidden; /* evita que el contenido empuje el sidebar */
+  font-family: "Poppins", sans-serif;
+}
+
+/* ==== SIDEBAR (controlado por su propio CSS pro) ==== */
+.admin-sidebar-pro {
+  flex-shrink: 0; /* Sidebar nunca se encoge */
+}
+
+/* ==== ZONA DEL CONTENIDO ==== */
+.admin-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* agrega independencia al scroll */
+  background-color: #f3fdf7;
+}
+
+/* ==== NAVBAR SUPERIOR ==== */
+.admin-navbar {
+  background-color: #ffffff;
+  padding: 15px 25px;
+  border-bottom: 2px solid #cde9dd;
+  font-size: 16px;
+  color: #1f6a4e;
+  font-weight: 600;
+  flex-shrink: 0; /* navbar no se mueve */
+}
+
+/* ==== CONTENIDO SCROLLEABLE ==== */
+.admin-page-content {
+  flex: 1;
+  overflow-y: auto; /* SOLO el contenido hace scroll */
+  padding: 25px;
+}

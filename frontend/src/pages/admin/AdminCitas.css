@@ -1,0 +1,62 @@
+/* Fondo suave verde clínico */
+.citas-admin-container {
+  background-color: #f3fdf7;
+  min-height: 100vh;
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Título principal */
+.citas-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f6a4e;
+  margin-bottom: 25px;
+}
+
+/* Loading */
+.citas-loading {
+  font-size: 18px;
+  color: #1f6a4e;
+}
+
+/* Grid de tarjetas */
+.citas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjetas */
+.cita-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.cita-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Estados */
+.pendiente {
+  border-left: 8px solid #e6b800;
+}
+
+.atendida {
+  border-left: 8px solid #1f6a4e;
+}
+
+.cancelada {
+  border-left: 8px solid #c0392b;
+}
+
+.cita-num {
+  font-size: 40px;
+  font-weight: 800;
+  margin-top: 10px;
+  color: #1f6a4e;
+}

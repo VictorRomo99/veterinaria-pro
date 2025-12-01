@@ -1,0 +1,160 @@
+/* ================================
+   FIX: SweetAlert siempre encima
+================================*/
+.swal2-container {
+  z-index: 9999999 !important;
+}
+
+/* ================================
+   Modal Overlay
+================================*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999 !important;
+}
+
+/* ================================
+   Modal Box
+================================*/
+.modal-box {
+  background: #ffffff;
+  padding: 30px;
+  width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 14px;
+
+  /* Sombra premium */
+  box-shadow: 0 10px 28px rgba(0,0,0,0.26);
+
+  animation: aparecer 0.2s ease-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  color: #2e5c3b;
+}
+
+/* ================================
+   INPUTS + SELECTS
+================================*/
+.modal-box select,
+.modal-box input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cfdacf;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.modal-box select:focus,
+.modal-box input:focus {
+  border-color: #34a853;
+  box-shadow: 0 0 3px rgba(52,168,83,0.5);
+}
+
+/* ================================
+   BOTONES
+================================*/
+.btn-save {
+  width: 100%;
+  padding: 12px;
+  background: #34a853;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-save:hover {
+  background: #2c8d46;
+}
+
+.btn-close {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: #e63946;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-close:hover {
+  background: #c92836;
+}
+
+/* ================================
+   TABLA DE DETALLES
+================================*/
+.tabla-detalles {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.tabla-detalles th {
+  background: #e8f3eb;
+  padding: 10px;
+  font-weight: 600;
+  color: #2e5c3b;
+}
+
+.tabla-detalles th,
+.tabla-detalles td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ================================
+   BOTONES DE ACCIÓN (editar / eliminar)
+================================*/
+.btn-edit {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: 0.2s;
+}
+
+.btn-edit:hover {
+  color: #34a853;
+}
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-delete:hover {
+  color: #e63946;
+}

@@ -1,0 +1,105 @@
+/* === CONTENEDOR GENERAL === */
+.legal-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f3fdf7; /* Verde suave corporativo */
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* === TARJETA PRINCIPAL === */
+.legal-card {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 35px 45px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  color: #1f3d32;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.7;
+}
+
+/* === TITULOS PRINCIPALES === */
+.legal-card h2 {
+  font-size: 30px;
+  font-weight: 800;
+  color: #1f6a4e;
+  margin-bottom: 20px;
+}
+
+/* === SUBTÍTULOS === */
+.legal-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #19583f;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* === PARRAFOS === */
+.legal-card p {
+  font-size: 16px;
+  color: #2c4238;
+  margin-bottom: 12px;
+  text-align: justify;
+}
+
+/* === LISTAS === */
+.legal-card ul {
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.legal-card ul li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #2f463c;
+}
+
+/* === BOTÓN VOLVER === */
+.legal-btn {
+  margin-top: 35px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #1f6a4e, #28a86b);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.legal-btn:hover {
+  background: linear-gradient(135deg, #19583f, #23915c);
+  transform: translateY(-2px);
+}
+
+/* === LINKS (por si los usas dentro) === */
+.legal-card a {
+  color: #1f6a4e;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.legal-card a:hover {
+  color: #28a86b;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .legal-card {
+    padding: 25px 20px;
+  }
+
+  .legal-card h2 {
+    font-size: 26px;
+  }
+
+  .legal-card h3 {
+    font-size: 18px;
+  }
+}
