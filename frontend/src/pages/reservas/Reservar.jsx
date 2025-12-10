@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Reservar.css";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function Reservar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +21,6 @@ export default function Reservar() {
   const [referencia, setReferencia] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // DURACIÓN POR SERVICIO (minutos)
   const duraciones = {
     "Consulta veterinaria general": 40,
     "Vacunación y control preventivo": 30,
@@ -29,22 +30,19 @@ export default function Reservar() {
     "Visita a domicilio": 60,
   };
 
-  // Detectar si vino desde ?servicio=...
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const srv = params.get("servicio");
     if (srv) setServicio(srv);
   }, [location.search]);
 
-  // Generar horarios válidos según reglas
   const generarHorarios = () => {
     if (!fecha || !servicio) return;
 
     const fechaSel = new Date(fecha + "T00:00:00");
-
-    // 🛑 Bloquear fechas pasadas
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
+
     if (fechaSel < hoy) {
       setHorariosDisponibles([]);
       setFecha("");
@@ -55,7 +53,6 @@ export default function Reservar() {
       });
     }
 
-    // 🛑 Bloquear domingos
     if (fechaSel.getDay() === 0) {
       setHorariosDisponibles([]);
       return Swal.fire({
@@ -66,17 +63,15 @@ export default function Reservar() {
     }
 
     const duracion = duraciones[servicio] || 40;
-
     let horarios = [];
-    let inicio = 8 * 60; // 08:00
-    const fin = 19 * 60; // 19:00
+    let inicio = 8 * 60;
+    const fin = 19 * 60;
 
     while (inicio + duracion <= fin) {
       const h = String(Math.floor(inicio / 60)).padStart(2, "0");
       const m = String(inicio % 60).padStart(2, "0");
       const horaStr = `${h}:${m}`;
 
-      // ❌ Bloquear almuerzo
       if (horaStr >= "13:00" && horaStr < "14:00") {
         inicio += 30;
         continue;
@@ -86,7 +81,6 @@ export default function Reservar() {
       inicio += 30;
     }
 
-    // ❌ Si es HOY, bloquear horas ya pasadas
     const hoyFechaStr = new Date().toISOString().split("T")[0];
     if (fecha === hoyFechaStr) {
       const ahora = new Date();
@@ -103,7 +97,6 @@ export default function Reservar() {
 
   useEffect(() => generarHorarios(), [fecha, servicio]);
 
-  // Validación de sesión
   useEffect(() => {
     const u = localStorage.getItem("usuario");
     if (!u) {
@@ -117,7 +110,6 @@ export default function Reservar() {
     }
   }, []);
 
-  // Envío de cita
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -126,7 +118,7 @@ export default function Reservar() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "/api/citas",
+        `${API}/api/citas`,
         {
           servicio,
           fecha,
@@ -164,11 +156,8 @@ export default function Reservar() {
   return (
     <div className="reservar-container">
       <div className="reservar-card">
-
         <h2>📅 Agendar Cita</h2>
-        <p className="intro">
-          Escoge el servicio, la fecha y un horario disponible.
-        </p>
+        <p className="intro">Escoge el servicio, la fecha y un horario disponible.</p>
 
         {usuario && (
           <div className="user-info">
@@ -179,7 +168,6 @@ export default function Reservar() {
         )}
 
         <form onSubmit={handleSubmit}>
-
           <label>Servicio</label>
           <select value={servicio} onChange={(e) => setServicio(e.target.value)} required>
             <option value="">Selecciona un servicio</option>
@@ -221,10 +209,8 @@ export default function Reservar() {
           <button type="submit" disabled={loading}>
             {loading ? "Guardando..." : "Confirmar cita"}
           </button>
-
         </form>
       </div>
     </div>
   );
 }
-
