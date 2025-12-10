@@ -30,12 +30,14 @@ export default function Reservar() {
     "Visita a domicilio": 60,
   };
 
+  // Detectar si vino desde ?servicio=
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const srv = params.get("servicio");
     if (srv) setServicio(srv);
   }, [location.search]);
 
+  // Generar horarios válidos
   const generarHorarios = () => {
     if (!fecha || !servicio) return;
 
@@ -97,6 +99,7 @@ export default function Reservar() {
 
   useEffect(() => generarHorarios(), [fecha, servicio]);
 
+  // Validación de sesión
   useEffect(() => {
     const u = localStorage.getItem("usuario");
     if (!u) {
@@ -110,6 +113,7 @@ export default function Reservar() {
     }
   }, []);
 
+  // Envío de cita
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -117,11 +121,14 @@ export default function Reservar() {
     try {
       const token = localStorage.getItem("token");
 
+      // 🔥 Convertir fecha para que Render NO falle
+      const fechaISO = new Date(fecha).toISOString().split("T")[0];
+
       const res = await axios.post(
         `${API}/api/citas`,
         {
           servicio,
-          fecha,
+          fecha: fechaISO, // <-- FIX PARA PRODUCCIÓN
           hora,
           comentario,
           direccion,
@@ -136,6 +143,7 @@ export default function Reservar() {
         text: res.data.message,
       });
 
+      // Limpiar formulario
       setServicio("");
       setFecha("");
       setHora("");
@@ -146,7 +154,7 @@ export default function Reservar() {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: err.response?.data?.message || "No se pudo registrar.",
+        text: err.response?.data?.message || "No se pudo registrar la cita.",
       });
     } finally {
       setLoading(false);
@@ -214,3 +222,4 @@ export default function Reservar() {
     </div>
   );
 }
+
