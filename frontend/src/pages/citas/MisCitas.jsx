@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./MisCitas.css";
+
 const API = import.meta.env.VITE_API_URL;
 
 export default function MisCitas() {
@@ -12,9 +13,10 @@ export default function MisCitas() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
+
       const { data } = await axios.get(`${API}/api/citas`, {
-  headers: { Authorization: `Bearer ${token}` },
-});
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       setCitas(data || []);
     } catch (err) {
@@ -27,7 +29,7 @@ export default function MisCitas() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [API]);  // 🔥 CORRECCIÓN CRÍTICA
 
   useEffect(() => {
     cargarCitas();
@@ -48,9 +50,10 @@ export default function MisCitas() {
 
     try {
       const token = localStorage.getItem("token");
-await axios.delete(`${API}/api/citas/${id}`, {
-  headers: { Authorization: `Bearer ${token}` },
-});
+
+      await axios.delete(`${API}/api/citas/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       Swal.fire({
         icon: "success",
@@ -58,6 +61,7 @@ await axios.delete(`${API}/api/citas/${id}`, {
         timer: 1400,
         showConfirmButton: false,
       });
+
       setCitas((prev) => prev.filter((c) => c.id !== id));
     } catch (err) {
       console.error(err);
@@ -69,7 +73,6 @@ await axios.delete(`${API}/api/citas/${id}`, {
     }
   };
 
-  // 🔵 NUEVO: reprogramar cita solo 1 vez
   const reprogramarCita = async (cita) => {
     if (cita.reprogramadaPorCliente) {
       return Swal.fire({
@@ -105,23 +108,24 @@ await axios.delete(`${API}/api/citas/${id}`, {
 
     try {
       const token = localStorage.getItem("token");
-await axios.put(
-  `${API}/api/citas/${cita.id}/reprogramar-cliente`,
-  {
-    nuevaFecha: formValues.fecha,
-    nuevaHora: formValues.hora,
-  },
-  {
-    headers: { Authorization: `Bearer ${token}` },
-  }
-);
 
+      await axios.put(
+        `${API}/api/citas/${cita.id}/reprogramar-cliente`,
+        {
+          nuevaFecha: formValues.fecha,
+          nuevaHora: formValues.hora,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       Swal.fire({
         icon: "success",
         title: "Cita reprogramada",
         text: "Recepción ha sido notificada.",
       });
+
       cargarCitas();
     } catch (err) {
       console.error(err);
@@ -133,75 +137,75 @@ await axios.put(
     }
   };
 
- return (
-  <div className="mc-page-wrapper">
-    <div className="mc-container">
-      <div className="mc-header">
-        <h2>🗓️ Mis citas</h2>
-        <button className="mc-refresh" onClick={cargarCitas} disabled={loading}>
-          {loading ? "Actualizando..." : "Actualizar"}
-        </button>
-      </div>
-
-      {loading ? (
-        <div className="mc-skel">Cargando tus citas…</div>
-      ) : citas.length === 0 ? (
-        <div className="mc-empty">
-          <p>No tienes citas registradas.</p>
-          <a className="mc-link" href="/servicios">
-            Agendar una cita
-          </a>
+  return (
+    <div className="mc-page-wrapper">
+      <div className="mc-container">
+        <div className="mc-header">
+          <h2>🗓️ Mis citas</h2>
+          <button className="mc-refresh" onClick={cargarCitas} disabled={loading}>
+            {loading ? "Actualizando..." : "Actualizar"}
+          </button>
         </div>
-      ) : (
-        <div className="mc-table-wrap">
-          <table className="mc-table">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Servicio</th>
-                <th>Tipo</th>
-                <th>Comentario</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {citas.map((c) => (
-                <tr key={c.id}>
-                  <td>{c.fecha}</td>
-                  <td>{c.hora}</td>
-                  <td>{c.servicio}</td>
-                  <td
-                    className={`mc-badge ${
-                      c.tipoAtencion === "domicilio" ? "dom" : "pres"
-                    }`}
-                  >
-                    {c.tipoAtencion === "domicilio" ? "Domicilio" : "Presencial"}
-                  </td>
-                  <td className="mc-comment">{c.comentario || "—"}</td>
-                  <td className="mc-actions">
-                    <button
-                      className="mc-edit"
-                      disabled={c.reprogramadaPorCliente}
-                      onClick={() => reprogramarCita(c)}
-                    >
-                      {c.reprogramadaPorCliente ? "Reprogramado" : "Reprogramar"}
-                    </button>
-                    <button
-                      className="mc-cancel"
-                      onClick={() => cancelarCita(c.id)}
-                    >
-                      Cancelar
-                    </button>
-                  </td>
+
+        {loading ? (
+          <div className="mc-skel">Cargando tus citas…</div>
+        ) : citas.length === 0 ? (
+          <div className="mc-empty">
+            <p>No tienes citas registradas.</p>
+            <a className="mc-link" href="/servicios">
+              Agendar una cita
+            </a>
+          </div>
+        ) : (
+          <div className="mc-table-wrap">
+            <table className="mc-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Servicio</th>
+                  <th>Tipo</th>
+                  <th>Comentario</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
-  </div>
-);
+              </thead>
+              <tbody>
+                {citas.map((c) => (
+                  <tr key={c.id}>
+                    <td>{c.fecha}</td>
+                    <td>{c.hora}</td>
+                    <td>{c.servicio}</td>
+                    <td
+                      className={`mc-badge ${
+                        c.tipoAtencion === "domicilio" ? "dom" : "pres"
+                      }`}
+                    >
+                      {c.tipoAtencion === "domicilio" ? "Domicilio" : "Presencial"}
+                    </td>
+                    <td className="mc-comment">{c.comentario || "—"}</td>
+                    <td className="mc-actions">
+                      <button
+                        className="mc-edit"
+                        disabled={c.reprogramadaPorCliente}
+                        onClick={() => reprogramarCita(c)}
+                      >
+                        {c.reprogramadaPorCliente ? "Reprogramado" : "Reprogramar"}
+                      </button>
 
+                      <button
+                        className="mc-cancel"
+                        onClick={() => cancelarCita(c.id)}
+                      >
+                        Cancelar
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
