@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./MisCitas.css";
+const API = import.meta.env.VITE_API_URL;
 
 export default function MisCitas() {
   const [citas, setCitas] = useState([]);
@@ -11,9 +12,10 @@ export default function MisCitas() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const { data } = await axios.get("/api/citas", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const { data } = await axios.get(`${API}/api/citas`, {
+  headers: { Authorization: `Bearer ${token}` },
+});
+
       setCitas(data || []);
     } catch (err) {
       console.error(err);
@@ -46,9 +48,10 @@ export default function MisCitas() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`/api/citas/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+await axios.delete(`${API}/api/citas/${id}`, {
+  headers: { Authorization: `Bearer ${token}` },
+});
+
       Swal.fire({
         icon: "success",
         title: "Cita cancelada",
@@ -102,16 +105,17 @@ export default function MisCitas() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.put(
-        `/api/citas/${cita.id}/reprogramar-cliente`,
-        {
-          nuevaFecha: formValues.fecha,
-          nuevaHora: formValues.hora,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+await axios.put(
+  `${API}/api/citas/${cita.id}/reprogramar-cliente`,
+  {
+    nuevaFecha: formValues.fecha,
+    nuevaHora: formValues.hora,
+  },
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+);
+
 
       Swal.fire({
         icon: "success",
