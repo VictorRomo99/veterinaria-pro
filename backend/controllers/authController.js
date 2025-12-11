@@ -4,12 +4,41 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import crypto from "crypto";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { Op } from "sequelize";
 import speakeasy from "speakeasy";
 import QRCode from "qrcode";
 
 dotenv.config();
+
+
+// 📨 Cliente global de Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// 👇 Usa el mismo "from" que en citaController
+const FROM_EMAIL =
+  'Soporte Colitas Sanas 🐾 <soporte@colitassanas.lat>';
+
+
+// Función reutilizable para enviar correo
+const sendMail = async (to, subject, html) => {
+  try {
+    console.log("📧 Enviando correo desde authController a:", to);
+
+    const result = await resend.emails.send({
+      from: FROM_EMAIL,
+      to: [to],
+      subject,
+      html,
+    });
+
+    console.log("📨 Resend (auth) response:", result);
+    return result;
+  } catch (error) {
+    console.error("❌ Error al enviar correo con Resend (auth):", error);
+    throw error;
+  }
+};
 
 // 📅 Calcular edad
 const calcularEdad = (fechaNacimiento) => {
@@ -218,42 +247,44 @@ export const verificar2FA = async (req, res) => {
 };
 
 // 📨 SOLICITAR RECUPERACIÓN DE CONTRASEÑA
+// 📨 SOLICITAR RECUPERACIÓN DE CONTRASEÑA
 export const forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
     const usuario = await Usuario.findOne({ where: { email } });
 
-    if (!usuario)
+    if (!usuario) {
       return res
         .status(404)
         .json({ message: "No se encontró una cuenta con ese correo." });
+    }
 
     const token = crypto.randomBytes(32).toString("hex");
     usuario.resetToken = token;
-    usuario.resetTokenExpira = Date.now() + 15 * 60 * 1000;
+    usuario.resetTokenExpira = Date.now() + 15 * 60 * 1000; // 15 min
     await usuario.save();
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
-      },
-    });
+    // 👉 Usa el dominio desplegado (configúralo en .env)
+    // Ejemplo: FRONTEND_URL=https://colitassanas.lat
+    const baseUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    const resetUrl = `${baseUrl}/reset-password?token=${token}`;
 
-    const resetUrl = `http://localhost:5173/reset-password?token=${token}`;
-
-    await transporter.sendMail({
-      from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
-      to: usuario.email,
-      subject: "Recuperación de contraseña",
-      html: `
+    await sendMail(
+      usuario.email,
+      "Recuperación de contraseña",
+      `
         <h2>Hola ${usuario.nombre}</h2>
         <p>Hemos recibido una solicitud para restablecer tu contraseña.</p>
-        <a href="${resetUrl}" target="_blank">${resetUrl}</a>
+        <p>Puedes hacerlo desde el siguiente enlace:</p>
+        <p>
+          <a href="${resetUrl}" target="_blank" style="color:#0f766e;">
+            Restablecer contraseña
+          </a>
+        </p>
         <p>⚠️ Este enlace expirará en 15 minutos.</p>
-      `,
-    });
+        <p>Si tú no solicitaste este cambio, puedes ignorar este correo.</p>
+      `
+    );
 
     res.json({ message: "Correo de recuperación enviado correctamente." });
   } catch (error) {
@@ -339,39 +370,41 @@ export const habilitar2FA = async (req, res) => {
 };
 
 // 📨 REINICIO DE 2FA (solicitar y confirmar)
+// 📨 REINICIO DE 2FA (solicitar y confirmar)
 export const solicitarReset2FA = async (req, res) => {
   try {
     const { email } = req.body;
     const usuario = await Usuario.findOne({ where: { email } });
 
-    if (!usuario)
+    if (!usuario) {
       return res
         .status(404)
         .json({ message: "No se encontró una cuenta con ese correo." });
+    }
 
     const token = crypto.randomBytes(32).toString("hex");
     usuario.resetToken = token;
     usuario.resetTokenExpira = Date.now() + 15 * 60 * 1000;
     await usuario.save();
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: process.env.MAIL_USER, pass: process.env.MAIL_PASS },
-    });
+    const baseUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    const resetUrl = `${baseUrl}/reset-2fa?token=${token}`;
 
-    const resetUrl = `http://localhost:5173/reset-2fa?token=${token}`;
-
-    await transporter.sendMail({
-      from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
-      to: usuario.email,
-      subject: "Restablecer autenticación 2FA",
-      html: `
+    await sendMail(
+      usuario.email,
+      "Restablecer autenticación 2FA",
+      `
         <h2>Hola ${usuario.nombre}</h2>
         <p>Hemos recibido una solicitud para restablecer tu autenticación 2FA.</p>
-        <a href="${resetUrl}" target="_blank">${resetUrl}</a>
+        <p>Para continuar, ingresa al siguiente enlace:</p>
+        <p>
+          <a href="${resetUrl}" target="_blank" style="color:#0f766e;">
+            Restablecer 2FA
+          </a>
+        </p>
         <p>⚠️ Este enlace expirará en 15 minutos.</p>
-      `,
-    });
+      `
+    );
 
     res.json({ message: "Correo de restablecimiento enviado correctamente." });
   } catch (error) {
@@ -381,6 +414,7 @@ export const solicitarReset2FA = async (req, res) => {
       .json({ message: "Error al enviar el correo de restablecimiento." });
   }
 };
+
 
 export const confirmarReset2FA = async (req, res) => {
   try {
@@ -537,22 +571,13 @@ export const crearClienteRapido = async (req, res) => {
       rol: "cliente",
     });
 
-    // 📨 Intentar enviar correo con la contraseña temporal (opcional)
+        // 📨 Intentar enviar correo con la contraseña temporal (opcional)
     let emailEnviado = false;
     try {
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.MAIL_USER,
-          pass: process.env.MAIL_PASS,
-        },
-      });
-
-      await transporter.sendMail({
-        from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
-        to: email,
-        subject: "Tu cuenta en Colitas Sanas",
-        html: `
+      await sendMail(
+        email,
+        "Tu cuenta en Colitas Sanas",
+        `
           <h2>Hola ${nombre}</h2>
           <p>Se ha creado tu cuenta en <strong>Colitas Sanas</strong>.</p>
           <p>Estos son tus datos de acceso para la web:</p>
@@ -561,13 +586,14 @@ export const crearClienteRapido = async (req, res) => {
             <li><strong>Contraseña temporal:</strong> ${tempPassword}</li>
           </ul>
           <p>Te recomendamos cambiar la contraseña después de tu primer inicio de sesión.</p>
-        `,
-      });
+        `
+      );
 
       emailEnviado = true;
     } catch (errMail) {
       console.error("❌ Error enviando correo a cliente rápido:", errMail);
     }
+
 
     return res.status(201).json({
       message: "Cliente creado correctamente.",
