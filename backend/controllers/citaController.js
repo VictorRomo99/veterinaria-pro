@@ -14,21 +14,31 @@ dotenv.config();
 const sendMail = async (to, subject, html) => {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    port: 587,          // PUERTO CORRECTO PARA RENDER
+    secure: false,      // STARTTLS → NO USAR secure: true
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS,
     },
+    tls: {
+      rejectUnauthorized: false, // NECESARIO EN RENDER
+    },
   });
 
-  await transporter.sendMail({
-    from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
-    to,
-    subject,
-    html,
-  });
+  try {
+    await transporter.sendMail({
+      from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
+      to,
+      subject,
+      html,
+    });
+
+    console.log("📨 Correo enviado correctamente");
+  } catch (error) {
+    console.error("❌ Error al enviar correo:", error);
+  }
 };
+
 
 /* ============================================
    📌 PLANTILLA HTML MODERNA
