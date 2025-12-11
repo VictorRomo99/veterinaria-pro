@@ -16,7 +16,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const sendMail = async (to, subject, html) => {
   try {
     await resend.emails.send({
-      from: "Colitas Sanas 🐾 <colitassanas68@gmail.com>",
+      from: "🐾 Clínica Veterinaria Colitas Sanas <onboarding@resend.dev>",
       to,
       subject,
       html,
