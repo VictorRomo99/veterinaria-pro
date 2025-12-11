@@ -19,7 +19,7 @@ const sendMail = async (to, subject, html) => {
     console.log("📧 Enviando correo a:", to);
 
     const result = await resend.emails.send({
-      from: "🐾 Clínica Veterinaria Colitas Sanas <onboarding@resend.dev>",
+      from: "Clínica Veterinaria Colitas Sanas <notificaciones@colitassanas.lat>",
       to: [to],
       subject,
       html,
