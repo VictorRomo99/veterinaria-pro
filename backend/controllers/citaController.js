@@ -1,7 +1,7 @@
 // backend/controllers/citaController.js
 import Cita from "../models/Cita.js";
 import Usuario from "../models/Usuario.js";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 import Notificacion from "../models/Notificacion.js";
@@ -11,38 +11,22 @@ dotenv.config();
 /* ============================================
    📌 FUNCIÓN GLOBAL PARA ENVIAR CORREO
 ============================================ */
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const sendMail = async (to, subject, html) => {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,          // PUERTO CORRECTO PARA RENDER
-    secure: false,      // STARTTLS → NO USAR secure: true
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,
-    },
-    tls: {
-      rejectUnauthorized: false, // NECESARIO EN RENDER
-    },
-  });
+  try {
+    await resend.emails.send({
+      from: "Colitas Sanas 🐾 <colitassanas68@gmail.com>",
+      to,
+      subject,
+      html,
+    });
 
- try {
-  await transporter.sendMail({
-    from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
-    to,
-    subject,
-    html,
-  });
-
-  console.log("📨 Correo enviado correctamente");
-} catch (error) {
-  console.error("❌ ERROR SMTP COMPLETO:");
-  console.error("Mensaje:", error.message);
-  console.error("Código:", error.code);
-  console.error("Stack:", error.stack);
-}
-
+    console.log("📨 Correo enviado correctamente con Resend");
+  } catch (error) {
+    console.error("❌ Error al enviar correo con Resend:", error);
+  }
 };
-
 
 /* ============================================
    📌 PLANTILLA HTML MODERNA
