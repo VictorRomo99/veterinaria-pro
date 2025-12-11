@@ -25,18 +25,22 @@ const sendMail = async (to, subject, html) => {
     },
   });
 
-  try {
-    await transporter.sendMail({
-      from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
-      to,
-      subject,
-      html,
-    });
+ try {
+  await transporter.sendMail({
+    from: `"Colitas Sanas 🐾" <${process.env.MAIL_USER}>`,
+    to,
+    subject,
+    html,
+  });
 
-    console.log("📨 Correo enviado correctamente");
-  } catch (error) {
-    console.error("❌ Error al enviar correo:", error);
-  }
+  console.log("📨 Correo enviado correctamente");
+} catch (error) {
+  console.error("❌ ERROR SMTP COMPLETO:");
+  console.error("Mensaje:", error.message);
+  console.error("Código:", error.code);
+  console.error("Stack:", error.stack);
+}
+
 };
 
 
