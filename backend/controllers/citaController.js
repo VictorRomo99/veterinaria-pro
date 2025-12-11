@@ -15,14 +15,18 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendMail = async (to, subject, html) => {
   try {
-    await resend.emails.send({
+
+    console.log("📧 Enviando correo a:", to);
+
+    const result = await resend.emails.send({
       from: "🐾 Clínica Veterinaria Colitas Sanas <onboarding@resend.dev>",
-      to,
+      to: [to],
       subject,
       html,
     });
 
-    console.log("📨 Correo enviado correctamente con Resend");
+    console.log("📨 Resend response:", result);
+
   } catch (error) {
     console.error("❌ Error al enviar correo con Resend:", error);
   }
