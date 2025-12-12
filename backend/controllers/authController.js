@@ -1,3 +1,4 @@
+// 🔄 Update for Resend Fix - 12/2025
 // backend/controllers/authController.js
 import Usuario from "../models/Usuario.js";
 import jwt from "jsonwebtoken";
