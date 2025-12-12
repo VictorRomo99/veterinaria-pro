@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API } from "../../api";
 import "./ForgotPassword.css";
 
 export default function ForgotPassword() {
@@ -15,7 +16,7 @@ export default function ForgotPassword() {
     setLoading(true);
 
     try {
-      const res = await axios.post("/api/auth/forgot-password", { email });
+      const res = await API.post("/auth/forgot-password", { email });
       setMensaje(res.data.message || "Correo de recuperación enviado correctamente.");
     } catch (err) {
       setError(err.response?.data?.message || "Error al enviar el correo de recuperación.");

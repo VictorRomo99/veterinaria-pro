@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API } from "../../api";
 import "./ResetPassword.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -31,10 +32,7 @@ export default function ResetPassword() {
 
     setLoading(true);
     try {
-      const res = await axios.post(
-        "/api/auth/reset-password",
-        { token, password }
-      );
+      await API.post("/auth/reset-password", { token, password });
 
       setMensaje(res.data.message || "Contraseña restablecida correctamente.");
 
