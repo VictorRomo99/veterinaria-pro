@@ -4,7 +4,7 @@ import {
   obtenerNotificaciones,
   marcarNotificacionLeida,
   marcarTodasNotificaciones,
-} from "../../api/notificaciones"; // 🔥 ruta corregida
+} from "../../api/notificaciones";
 import "./NotificacionesPanel.css";
 
 export default function NotificacionesPanel() {
@@ -16,9 +16,21 @@ export default function NotificacionesPanel() {
   const cargarNotificaciones = async () => {
     try {
       const res = await obtenerNotificaciones(token);
-      setNotificaciones(res.data);
+
+      const datos = res.data;
+
+      // ⭐ Manejo seguro para evitar el error .map
+      if (Array.isArray(datos)) {
+        setNotificaciones(datos);
+      } else if (Array.isArray(datos.notificaciones)) {
+        setNotificaciones(datos.notificaciones);
+      } else {
+        setNotificaciones([]);
+      }
+
     } catch (error) {
       console.error("❌ Error cargando notificaciones:", error);
+      setNotificaciones([]); // Evita que crashee la vista
     } finally {
       setLoading(false);
     }
