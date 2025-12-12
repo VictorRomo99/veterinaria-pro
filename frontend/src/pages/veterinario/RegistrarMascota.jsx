@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Swal from "sweetalert2";
+import { API } from "../../api"; // ✅ USAR INSTANCIA
 import "./RegistrarMascota.css";
 
 export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
   const [busqueda, setBusqueda] = useState("");
-  const [resultados, setResultados] = useState([]); // 🔒 siempre array
+  const [resultados, setResultados] = useState([]);
   const [duenoSeleccionado, setDuenoSeleccionado] = useState(null);
 
   const [nuevaMascota, setNuevaMascota] = useState({
@@ -27,41 +27,30 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
     }
 
     try {
-      const res = await axios.get(
-        `/api/auth/buscar?query=${busqueda}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const res = await API.get(`/auth/buscar?query=${busqueda}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-      console.log("🔎 Respuesta buscar usuario:", res.data);
+      // 🛡️ PROTECCIÓN REAL
+      const usuarios = Array.isArray(res.data) ? res.data : [];
 
-      // 🔥 NORMALIZAR RESPUESTA
-      let listaUsuarios = [];
-
-      if (Array.isArray(res.data)) {
-        listaUsuarios = res.data;
-      } else if (Array.isArray(res.data?.usuarios)) {
-        listaUsuarios = res.data.usuarios;
-      } else if (res.data?.usuario) {
-        listaUsuarios = [res.data.usuario];
-      }
-
-      if (listaUsuarios.length === 0) {
+      if (usuarios.length === 0) {
         setResultados([]);
         Swal.fire(
           "Sin resultados",
-          "No se encontró al usuario. Debe registrarse en recepción por favor.",
+          "No se encontró al usuario. Debe registrarse en recepción.",
           "info"
         );
       } else {
-        setResultados(listaUsuarios);
+        setResultados(usuarios);
       }
     } catch (err) {
-      console.error("❌ Error al buscar usuario:", err);
+      console.error("❌ Error buscar usuario:", err);
       setResultados([]);
       Swal.fire(
-        "Sin resultados",
-        "No se encontró al usuario. Debe registrarse en recepción por favor.",
-        "info"
+        "Error",
+        "No se pudo buscar el usuario. Intente nuevamente.",
+        "error"
       );
     }
   };
@@ -75,8 +64,8 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
     }
 
     try {
-      await axios.post(
-        "/api/mascotas",
+      await API.post(
+        "/mascotas",
         { ...nuevaMascota, duenoId: duenoSeleccionado.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -92,6 +81,7 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
         color: "",
         peso: "",
       });
+
       setBusqueda("");
       setResultados([]);
       setDuenoSeleccionado(null);
@@ -139,12 +129,6 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
             ))}
           </ul>
         )}
-
-        {resultados.length === 0 && busqueda.trim() && (
-          <p className="sin-resultados">
-            ❌ No se encontró el usuario. Debe registrarse en recepción por favor.
-          </p>
-        )}
       </div>
 
       {duenoSeleccionado && (
@@ -159,7 +143,7 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
               key={campo}
               type={campo === "edad" || campo === "peso" ? "number" : "text"}
               className="input-box"
-              placeholder={campo.charAt(0).toUpperCase() + campo.slice(1)}
+              placeholder={campo.toUpperCase()}
               value={nuevaMascota[campo]}
               onChange={(e) =>
                 setNuevaMascota({ ...nuevaMascota, [campo]: e.target.value })
@@ -180,3 +164,4 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
     </div>
   );
 }
+
