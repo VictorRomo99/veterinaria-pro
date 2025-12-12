@@ -45,10 +45,11 @@ export default function MisMascotas() {
 
       // HISTORIAL CLÍNICO
       const resHist = await axios.get(
-        `${API}/api/historias/mascota/${mascota.id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      setHistorial(resHist.data || []);
+  `${API}/api/historias/mascota/${mascota.id}/resumen`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
+setHistorial(resHist.data || null);
+
 
       // ESTADO
       const resEstado = await axios.get(

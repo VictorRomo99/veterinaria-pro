@@ -51,20 +51,26 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
 
-    if (name === "tipoAtencion") {
-      const precio = preciosBase[value] || "";
-      setForm((prev) => ({
-        ...prev,
-        tipoAtencion: value,
-        total: precio,
-      }));
-      return;
-    }
+  if (name === "tipoAtencion") {
+    const precioSugerido = preciosBase[value] ?? "";
 
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+    setForm((prev) => ({
+      ...prev,
+      tipoAtencion: value,
+      // ✅ solo asigna precio si el usuario aún no escribió uno
+      total: prev.total === "" ? precioSugerido : prev.total,
+    }));
+    return;
+  }
+
+  setForm((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
 
   const toggleSeccion = (clave) => {
     setSecciones((prev) => ({ ...prev, [clave]: !prev[clave] }));
