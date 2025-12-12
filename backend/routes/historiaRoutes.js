@@ -8,6 +8,10 @@ import {
 } from "../controllers/historiaClinicaController.js";
 
 const router = express.Router();
+// 🔓 Permitir preflight CORS
+router.options("/", (req, res) => {
+  res.sendStatus(200);
+});
 
 // Crear historia (Dashboard Vet)
 router.post("/", authMiddleware, crearHistoria);
