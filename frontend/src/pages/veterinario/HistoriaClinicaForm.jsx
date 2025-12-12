@@ -32,6 +32,8 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
     proximaDosis: "",
     notaDosis: "",
   });
+  setPrecioEditado(false);
+
 
   const [secciones, setSecciones] = useState({
     datosClinicos: true,
@@ -58,25 +60,31 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
   //  MANEJO DE CAMBIOS
   // ===================================================
   const handleChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
 
-    // 🟢 Cambia tipo de atención → sugiere precio
-    if (name === "tipoAtencion") {
-      const sugerido = preciosBase[value] ?? "";
-
-      setForm((prev) => ({
-        ...prev,
-        tipoAtencion: value,
-        total: prev.total === "" ? sugerido : prev.total,
-      }));
-      return;
-    }
+  // 🟢 Cambio de tipo de atención → SOLO sugiere si el vet NO tocó el precio
+  if (name === "tipoAtencion") {
+    const sugerido = preciosBase[value] ?? "";
 
     setForm((prev) => ({
       ...prev,
-      [name]: value,
+      tipoAtencion: value,
+      total: precioEditado ? prev.total : sugerido,
     }));
-  };
+    return;
+  }
+
+  // 🟢 Cuando el veterinario escribe el precio, marcamos como editado
+  if (name === "total") {
+    setPrecioEditado(true);
+  }
+
+  setForm((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
 
   const toggleSeccion = (clave) => {
     setSecciones((prev) => ({ ...prev, [clave]: !prev[clave] }));
