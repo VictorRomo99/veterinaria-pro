@@ -12,6 +12,7 @@ const router = express.Router();
 router.options("/", (req, res) => {
   res.sendStatus(200);
 });
+// blablabak
 
 // Crear historia (Dashboard Vet)
 router.post("/", authMiddleware, crearHistoria);
