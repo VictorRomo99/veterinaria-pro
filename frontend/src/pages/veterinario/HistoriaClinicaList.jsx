@@ -5,6 +5,7 @@ import "./HistoriaClinicaList.css";
 
 export default function HistoriaClinicaList({ mascota }) {
   const token = localStorage.getItem("token");
+
   const [historias, setHistorias] = useState([]);
   const [historiaSeleccionada, setHistoriaSeleccionada] = useState(null);
 
@@ -12,25 +13,36 @@ export default function HistoriaClinicaList({ mascota }) {
   const [filtroTipo, setFiltroTipo] = useState("Todas");
   const [busqueda, setBusqueda] = useState("");
 
+  // CARGAR HISTORIAS CON SEGURIDAD
   useEffect(() => {
-    if (mascota?.id) {
-      axios
-        .get(`/api/historias/mascota/${mascota.id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((res) => setHistorias(res.data))
-        .catch((err) => console.error(err));
-    } else {
+    if (!mascota?.id) {
       setHistorias([]);
+      return;
     }
+
+    axios
+      .get(`/api/historias/mascota/${mascota.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        // 🔥 Protección TOTAL: que siempre sea array
+        const data = Array.isArray(res.data) ? res.data : [];
+        setHistorias(data);
+      })
+      .catch((err) => {
+        console.error("❌ Error cargando historias:", err);
+        setHistorias([]); // evitar fallos
+      });
   }, [mascota, token]);
 
-  // filtrar
-  const historiasFiltradas = historias.filter((h) => {
+  // SIEMPRE trabajar con un array seguro
+  const listaSegura = Array.isArray(historias) ? historias : [];
+
+  // FILTROS SEGUROS
+  const historiasFiltradas = listaSegura.filter((h) => {
     const coincideTipo =
       filtroTipo === "Todas" ||
-      (h.tipoAtencion &&
-        h.tipoAtencion.toLowerCase() === filtroTipo.toLowerCase());
+      h.tipoAtencion?.toLowerCase() === filtroTipo.toLowerCase();
 
     const texto = (
       (h.motivoConsulta || "") +
@@ -117,7 +129,6 @@ export default function HistoriaClinicaList({ mascota }) {
                   </p>
                 )}
 
-                {/* NUEVO: BADGE DE DOSIS PROGRAMADA */}
                 {h.tieneDosisProgramada ? (
                   <span className="badge-dosis">
                     🕒 Próxima dosis:{" "}
