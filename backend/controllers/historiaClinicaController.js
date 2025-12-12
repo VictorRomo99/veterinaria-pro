@@ -160,7 +160,23 @@ export const obtenerHistoriaPorMascota = async (req, res) => {
 
     const historias = await HistoriaClinica.findAll({
       where: { mascotaId: id },
-      order: [["fecha", "DESC"]]
+      order: [["fecha", "DESC"]],
+      attributes: [
+        "id",
+        "fecha",
+        "motivoConsulta",
+        "diagnosticoPresuntivo",
+        "diagnosticoDefinitivo",
+        "planTratamiento",
+        "proximaDosis",
+      ],
+      include: [
+        {
+          model: Usuario,
+          as: "veterinario",
+          attributes: ["nombre"], // 👈 SOLO lo que el front usa
+        },
+      ],
     });
 
     res.json(historias);
