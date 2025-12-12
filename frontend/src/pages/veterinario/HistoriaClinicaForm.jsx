@@ -10,59 +10,63 @@ const API = import.meta.env.VITE_API_URL;
 export default function HistoriaClinicaForm({ mascota, onSaved }) {
   const token = localStorage.getItem("token");
 
-  const [form, setForm] = useState({
-    tipoAtencion: "Consulta",
-    motivoConsulta: "",
-    anamnesis: "",
-    signosSintomas: "",
-    examenesRecomendados: "",
-    examenesRealizados: "",
-    diagnosticoPresuntivo: "",
-    diagnosticoDefinitivo: "",
-    planTratamiento: "",
-    observaciones: "",
-    temperatura: "",
-    mucosas: "",
-    frecuenciaResp: "",
-    frecuenciaCard: "",
-    pulso: "",
-    tllc: "",
-    deshidratacion: "",
-    total: "",
-    proximaDosis: "",
-    notaDosis: "",
-  });
-  setPrecioEditado(false);
-
-
-  const [secciones, setSecciones] = useState({
-    datosClinicos: true,
-    diagnostico: false,
-    fisiologicos: false,
-    archivos: false,
-    dosis: false,
-  });
-
-  const [archivos, setArchivos] = useState([]);
-  const [archivosPreview, setArchivosPreview] = useState([]);
-
-  // 💡 Precios sugeridos (EDITABLES)
-  const preciosBase = {
-    Vacunación: 50,
-    Desparasitación: 40,
-    Consulta: 60,
-    Cirugía: 200,
-    Emergencia: 100,
-    Control: 0,
-  };
-
   // ===================================================
-  //  MANEJO DE CAMBIOS
-  // ===================================================
-  const handleChange = (e) => {
+//  ESTADOS
+// ===================================================
+const [form, setForm] = useState({
+  tipoAtencion: "Consulta",
+  motivoConsulta: "",
+  anamnesis: "",
+  signosSintomas: "",
+  examenesRecomendados: "",
+  examenesRealizados: "",
+  diagnosticoPresuntivo: "",
+  diagnosticoDefinitivo: "",
+  planTratamiento: "",
+  observaciones: "",
+  temperatura: "",
+  mucosas: "",
+  frecuenciaResp: "",
+  frecuenciaCard: "",
+  pulso: "",
+  tllc: "",
+  deshidratacion: "",
+  total: "",
+  proximaDosis: "",
+  notaDosis: "",
+});
+
+// 🔑 Controla si el veterinario ya tocó el precio
+const [precioEditado, setPrecioEditado] = useState(false);
+
+const [secciones, setSecciones] = useState({
+  datosClinicos: true,
+  diagnostico: false,
+  fisiologicos: false,
+  archivos: false,
+  dosis: false,
+});
+
+const [archivos, setArchivos] = useState([]);
+const [archivosPreview, setArchivosPreview] = useState([]);
+
+// 💡 Precios sugeridos (NO obligatorios)
+const preciosBase = {
+  Vacunación: 50,
+  Desparasitación: 40,
+  Consulta: 60,
+  Cirugía: 200,
+  Emergencia: 100,
+  Control: 0,
+};
+
+// ===================================================
+//  MANEJO DE CAMBIOS (BLINDADO)
+// ===================================================
+const handleChange = (e) => {
   const { name, value } = e.target;
 
-  // 🟢 Cambio de tipo de atención → SOLO sugiere si el vet NO tocó el precio
+  // 🟢 Cambio de tipo de atención → sugiere precio SOLO si no fue editado
   if (name === "tipoAtencion") {
     const sugerido = preciosBase[value] ?? "";
 
@@ -71,12 +75,13 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
       tipoAtencion: value,
       total: precioEditado ? prev.total : sugerido,
     }));
+
     return;
   }
 
-  // 🟢 Cuando el veterinario escribe el precio, marcamos como editado
+  // 🟢 El veterinario escribe el precio manualmente
   if (name === "total") {
-    setPrecioEditado(true);
+    setPrecioEditado(value !== ""); // ← si borra el monto, vuelve a sugerir
   }
 
   setForm((prev) => ({
@@ -84,7 +89,6 @@ export default function HistoriaClinicaForm({ mascota, onSaved }) {
     [name]: value,
   }));
 };
-
 
   const toggleSeccion = (clave) => {
     setSecciones((prev) => ({ ...prev, [clave]: !prev[clave] }));
