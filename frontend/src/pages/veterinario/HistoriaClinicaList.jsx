@@ -18,34 +18,41 @@ export default function HistoriaClinicaList({ mascota }) {
         .get(`/api/historias/mascota/${mascota.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => setHistorias(res.data))
+        .then((res) => {
+  const data = Array.isArray(res.data) ? res.data : [];
+  setHistorias(data);
+})
+
         .catch((err) => console.error(err));
     } else {
       setHistorias([]);
     }
   }, [mascota, token]);
+// 🔒 Blindaje: aseguramos que siempre sea un array
+const historialSeguro = Array.isArray(historias) ? historias : [];
 
-  // filtrar
-  const historiasFiltradas = historias.filter((h) => {
-    const coincideTipo =
-      filtroTipo === "Todas" ||
-      (h.tipoAtencion &&
-        h.tipoAtencion.toLowerCase() === filtroTipo.toLowerCase());
+// 🔍 Filtrar sobre el array seguro
+const historiasFiltradas = historialSeguro.filter((h) => {
+  const coincideTipo =
+    filtroTipo === "Todas" ||
+    (h.tipoAtencion &&
+      h.tipoAtencion.toLowerCase() === filtroTipo.toLowerCase());
 
-    const texto = (
-      (h.motivoConsulta || "") +
-      " " +
-      (h.diagnosticoPresuntivo || "") +
-      " " +
-      (h.planTratamiento || "") +
-      " " +
-      (h.observaciones || "")
-    ).toLowerCase();
+  const texto = (
+    (h.motivoConsulta || "") +
+    " " +
+    (h.diagnosticoPresuntivo || "") +
+    " " +
+    (h.planTratamiento || "") +
+    " " +
+    (h.observaciones || "")
+  ).toLowerCase();
 
-    const coincideBusqueda = texto.includes(busqueda.toLowerCase());
+  const coincideBusqueda = texto.includes(busqueda.toLowerCase());
 
-    return coincideTipo && coincideBusqueda;
-  });
+  return coincideTipo && coincideBusqueda;
+});
+
 
   return (
     <div className="historial-container">
