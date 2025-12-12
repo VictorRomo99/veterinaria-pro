@@ -5,7 +5,7 @@ import "./RegistrarMascota.css";
 
 export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
   const [busqueda, setBusqueda] = useState("");
-  const [resultados, setResultados] = useState([]);
+  const [resultados, setResultados] = useState([]); // 🔒 siempre array
   const [duenoSeleccionado, setDuenoSeleccionado] = useState(null);
 
   const [nuevaMascota, setNuevaMascota] = useState({
@@ -32,7 +32,20 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      if (res.data.length === 0) {
+      console.log("🔎 Respuesta buscar usuario:", res.data);
+
+      // 🔥 NORMALIZAR RESPUESTA
+      let listaUsuarios = [];
+
+      if (Array.isArray(res.data)) {
+        listaUsuarios = res.data;
+      } else if (Array.isArray(res.data?.usuarios)) {
+        listaUsuarios = res.data.usuarios;
+      } else if (res.data?.usuario) {
+        listaUsuarios = [res.data.usuario];
+      }
+
+      if (listaUsuarios.length === 0) {
         setResultados([]);
         Swal.fire(
           "Sin resultados",
@@ -40,9 +53,10 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
           "info"
         );
       } else {
-        setResultados(res.data);
+        setResultados(listaUsuarios);
       }
     } catch (err) {
+      console.error("❌ Error al buscar usuario:", err);
       setResultados([]);
       Swal.fire(
         "Sin resultados",
@@ -94,7 +108,6 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
 
   return (
     <div className="registrar-mascota-modal">
-
       <h2 className="modal-title">Registrar nueva mascota</h2>
       <div className="modal-divider"></div>
 
@@ -136,9 +149,9 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
 
       {duenoSeleccionado && (
         <form className="form-mascota" onSubmit={registrarMascota}>
-
           <h3 className="form-subtitle">
-            Registrar mascota para {duenoSeleccionado.nombre} {duenoSeleccionado.apellido}
+            Registrar mascota para {duenoSeleccionado.nombre}{" "}
+            {duenoSeleccionado.apellido}
           </h3>
 
           {Object.keys(nuevaMascota).map((campo) => (
@@ -161,7 +174,6 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
         </form>
       )}
 
-      {/* EL ÚNICO BOTÓN CERRAR */}
       <button className="btn-cerrar" onClick={onClose}>
         Cerrar
       </button>
