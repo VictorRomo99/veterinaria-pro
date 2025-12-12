@@ -230,6 +230,23 @@ const handleChange = (e) => {
           <option value="Emergencia">Emergencia</option>
         </select>
       </div>
+      {/* TOTAL — CAMPO GLOBAL (ADMINISTRATIVO) */}
+<div className="form-row">
+  <label>Total (S/)</label>
+  <input
+    type="number"
+    step="0.01"
+    name="total"
+    value={form.total}
+    onChange={handleChange}
+    placeholder="Ingrese el monto"
+    required
+  />
+  <small className="hint">
+    💡 Precio sugerido según atención, editable por el veterinario
+  </small>
+</div>
+
 
       {/* DATOS CLÍNICOS */}
       <div className="seccion">
@@ -439,19 +456,6 @@ const handleChange = (e) => {
                     value={form.deshidratacion}
                     onChange={handleChange}
                     placeholder="%"
-                  />
-                </div>
-
-                <div className="form-row">
-                  <label>Total (S/)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    name="total"
-                    value={form.total}
-                    onChange={handleChange}
-                    placeholder="Ej. 45.00"
-                    required
                   />
                 </div>
               </div>
