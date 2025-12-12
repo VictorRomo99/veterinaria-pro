@@ -9,9 +9,13 @@ import {
 
 const router = express.Router();
 
+// Crear historia (Dashboard Vet)
 router.post("/", authMiddleware, crearHistoria);
-router.get("/mascota/:id", authMiddleware, listarHistoriasPorMascota);
-router.get("/mascota/:id", authMiddleware, obtenerHistoriaPorMascota);
 
+// Listado completo de historias (Dashboard Vet)
+router.get("/mascota/:id", authMiddleware, listarHistoriasPorMascota);
+
+// Historia RESUMEN / ÚLTIMA / ESPECÍFICA (Mis Mascotas)
+router.get("/mascota/:id/resumen", authMiddleware, obtenerHistoriaPorMascota);
 
 export default router;
