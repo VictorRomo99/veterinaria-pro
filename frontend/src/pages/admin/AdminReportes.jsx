@@ -4,6 +4,7 @@ import axios from "axios";
 import "./AdminReportes.css";
 
 const API = import.meta.env.VITE_API_URL;
+const [periodo, setPeriodo] = useState("diario");
 
 
 export default function AdminReportes() {
@@ -17,26 +18,51 @@ export default function AdminReportes() {
   const [loading, setLoading] = useState(true);
 
   const cargarReportes = async () => {
-    try {
-      const res = await axios.get(`${API}/api/admin/reportes/ventas`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+  try {
+    const res = await axios.get(
+      `${API}/api/admin/reportes/ventas?periodo=${periodo}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
 
-      setData(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error cargando reportes:", error);
-      setLoading(false);
-    }
-  };
+    setData(res.data);
+    setLoading(false);
+  } catch (error) {
+    console.error("Error cargando reportes:", error);
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     cargarReportes();
-  }, []);
+  }, [periodo]);
 
   return (
     <div className="reportes-container">
       <h2 className="reportes-title">📈 Reportes de Ventas</h2>
+      <div className="filtro-periodo">
+  <button
+    className={periodo === "diario" ? "activo" : ""}
+    onClick={() => setPeriodo("diario")}
+  >
+    📅 Diario
+  </button>
+
+  <button
+    className={periodo === "semanal" ? "activo" : ""}
+    onClick={() => setPeriodo("semanal")}
+  >
+    📆 Semanal
+  </button>
+
+  <button
+    className={periodo === "mensual" ? "activo" : ""}
+    onClick={() => setPeriodo("mensual")}
+  >
+    🗓️ Mensual
+  </button>
+</div>
+
 
       {loading ? (
         <p className="reportes-loading">Cargando información...</p>

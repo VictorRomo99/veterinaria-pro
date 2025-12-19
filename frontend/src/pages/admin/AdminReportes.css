@@ -67,3 +67,29 @@
   padding: 12px;
   border-bottom: 1px solid #ddeee4;
 }
+.filtro-periodo {
+  display: flex;
+  background: #e6f7ef;
+  padding: 6px;
+  border-radius: 999px;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: 1.2rem;
+}
+
+.filtro-periodo button {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #1f6a4e;
+  transition: 0.25s;
+}
+
+.filtro-periodo button.activo {
+  background: #1a7f5a;
+  color: white;
+  box-shadow: 0 4px 10px rgba(26, 127, 90, 0.35);
+}
