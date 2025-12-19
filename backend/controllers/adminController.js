@@ -18,8 +18,18 @@ export const getDashboardResumen = async (req, res) => {
     const totalMascotas = await Mascota.count();
     const totalBoletas = await Boleta.count();
 
+    const hoyInicio = new Date();
+    hoyInicio.setHours(0, 0, 0, 0);
+
+    const hoyFin = new Date();
+    hoyFin.setHours(23, 59, 59, 999);
+
     const ventasHoy = await Boleta.sum("total", {
-      where: { fecha: new Date().toISOString().slice(0, 10) },
+      where: {
+        createdAt: {
+          [Op.between]: [hoyInicio, hoyFin],
+        },
+      },
     });
 
     const citasPendientes = await Cita.count({
@@ -34,9 +44,11 @@ export const getDashboardResumen = async (req, res) => {
       citasPendientes,
     });
   } catch (error) {
+    console.error("Dashboard error:", error);
     res.status(500).json({ error: error.message });
   }
 };
+
 
 /* =====================================================
    📌 LISTADO DE USUARIOS
