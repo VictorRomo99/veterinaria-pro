@@ -3,6 +3,8 @@ import axios from "axios";
 import ModalHistoria from "./ModalHistoria";
 import "./HistoriaClinicaList.css";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function HistoriaClinicaList({ mascota }) {
   const token = localStorage.getItem("token");
   const [historias, setHistorias] = useState([]);
@@ -12,22 +14,27 @@ export default function HistoriaClinicaList({ mascota }) {
   const [filtroTipo, setFiltroTipo] = useState("Todas");
   const [busqueda, setBusqueda] = useState("");
 
-  useEffect(() => {
-    if (mascota?.id) {
-      axios
-        .get(`/api/historias/mascota/${mascota.id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((res) => {
-  const data = Array.isArray(res.data) ? res.data : [];
-  setHistorias(data);
-})
+useEffect(() => {
+  if (!mascota?.id) {
+    setHistorias([]);
+    return;
+  }
 
-        .catch((err) => console.error(err));
-    } else {
+  axios
+    .get(
+      `${API}/api/historias/mascota/${mascota.id}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((res) => {
+      const data = Array.isArray(res.data) ? res.data : [];
+      setHistorias(data);
+    })
+    .catch((err) => {
+      console.error("Error cargando historias:", err);
       setHistorias([]);
-    }
-  }, [mascota, token]);
+    });
+}, [mascota?.id, token]);
+
 // 🔒 Blindaje: aseguramos que siempre sea un array
 const historialSeguro = Array.isArray(historias) ? historias : [];
 

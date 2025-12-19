@@ -20,7 +20,7 @@ export default function ModalHistoria({ historia, onClose }) {
         setArchivos(null);
 
         const res = await axios.get(
-          `${API_BASE}/api/archivos/historia/${historia.id}`,
+          `${API}/api/archivos/historia/${historia.id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
