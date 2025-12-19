@@ -121,45 +121,46 @@
   font-weight: 600;
   width: fit-content;
 }
-/* ==============================
-   ✅ FILTRO POR ESPECIE (BOTONES)
-   No afecta estilos existentes
-============================== */
-
-.mascotas-panel-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 12px; /* espacio ordenado antes de las cards */
-}
+/* =========================================
+   FILTRO POR ESPECIE – ESTILO PROFESIONAL
+   Tipo tabs (una sola fila)
+========================================= */
 
 .filtro-especie-botones {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  background: #e6f7ef;
+  border-radius: 999px;
+  padding: 6px;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
 .filtro-especie-botones button {
-  padding: 6px 14px;
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid #cfeee2;
-  background: #f4fdf9;
-  cursor: pointer;
   font-weight: 700;
-  font-size: 0.88rem;
-  transition: 0.2s ease;
-  line-height: 1.1;
+  font-size: 0.9rem;
+  color: #1f6a4e;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .filtro-especie-botones button:hover {
-  background: #e6f7ef;
-  transform: translateY(-1px);
+  background: rgba(31, 106, 78, 0.08);
 }
 
 .filtro-especie-botones button.activo {
   background: #1a7f5a;
   color: #ffffff;
-  border-color: #1a7f5a;
+  box-shadow: 0 4px 10px rgba(26, 127, 90, 0.35);
 }
 
 
