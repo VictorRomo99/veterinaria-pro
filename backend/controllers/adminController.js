@@ -8,7 +8,7 @@ import Caja from "../models/Caja.js";
 import MovimientoCaja from "../models/MovimientoCaja.js";
 import Cita from "../models/Cita.js";
 import Atencion from "../models/Atencion.js";
-
+import { Op } from "sequelize";
 /* =====================================================
    📌 DASHBOARD — Resumen general del sistema
 ===================================================== */
@@ -129,21 +129,48 @@ export const getAtencionesResumen = async (req, res) => {
 ===================================================== */
 export const getReportesVentas = async (req, res) => {
   try {
-    const totalVentas = await Boleta.sum("total");
+    const { periodo = "diario" } = req.query;
+
+    const hoy = new Date();
+    let fechaInicio = new Date();
+
+    if (periodo === "diario") {
+      fechaInicio.setHours(0, 0, 0, 0);
+    }
+
+    if (periodo === "semanal") {
+      fechaInicio.setDate(hoy.getDate() - 7);
+    }
+
+    if (periodo === "mensual") {
+      fechaInicio.setMonth(hoy.getMonth() - 1);
+    }
+
     const boletasRecientes = await Boleta.findAll({
+      where: {
+        createdAt: {
+          [Op.gte]: fechaInicio,
+        },
+      },
       include: [
         { model: BoletaDetalle, as: "detalles" },
         { model: Mascota, as: "mascota" },
       ],
-      limit: 30,
       order: [["id", "DESC"]],
+      limit: 50,
     });
 
+    const totalVentas = boletasRecientes.reduce(
+      (acc, b) => acc + Number(b.total || 0),
+      0
+    );
+
     res.json({
-      totalVentas: totalVentas || 0,
+      totalVentas,
       boletasRecientes,
     });
   } catch (error) {
+    console.error("Error reportes ventas:", error);
     res.status(500).json({ error: error.message });
   }
 };
