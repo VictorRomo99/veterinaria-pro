@@ -121,6 +121,46 @@
   font-weight: 600;
   width: fit-content;
 }
+/* ==============================
+   ✅ FILTRO POR ESPECIE (BOTONES)
+   No afecta estilos existentes
+============================== */
+
+.mascotas-panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px; /* espacio ordenado antes de las cards */
+}
+
+.filtro-especie-botones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filtro-especie-botones button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #cfeee2;
+  background: #f4fdf9;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: 0.2s ease;
+  line-height: 1.1;
+}
+
+.filtro-especie-botones button:hover {
+  background: #e6f7ef;
+  transform: translateY(-1px);
+}
+
+.filtro-especie-botones button.activo {
+  background: #1a7f5a;
+  color: #ffffff;
+  border-color: #1a7f5a;
+}
 
 
 

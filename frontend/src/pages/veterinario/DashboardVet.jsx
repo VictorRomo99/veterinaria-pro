@@ -18,13 +18,16 @@ export default function DashboardVet() {
   const [busqueda, setBusqueda] = useState("");
   const [mostrarRegistrar, setMostrarRegistrar] = useState(false);
 
+  // ✅ NUEVO: filtro por especie con botones
+  const [filtroEspecie, setFiltroEspecie] = useState("TODOS"); // TODOS | PERRO | GATO | OTROS
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const u = localStorage.getItem("usuario");
     if (u) setUsuario(JSON.parse(u));
-
     cargarMascotas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const cargarMascotas = async () => {
@@ -34,14 +37,11 @@ export default function DashboardVet() {
       });
 
       console.log("🐾 Mascotas recibidas:", res.data);
-
-      // 🔥 BLINDAMOS PARA QUE NUNCA REViente .filter()
       setMascotas(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("❌ Error cargando mascotas:", err);
       Swal.fire("Error", "No se pudieron cargar las mascotas.", "error");
-
-      setMascotas([]); // evita crasheo
+      setMascotas([]);
     }
   };
 
@@ -54,26 +54,35 @@ export default function DashboardVet() {
       });
 
       console.log("📘 Historias recibidas:", res.data);
-
       setHistorias(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("❌ Error cargando historias:", err);
       Swal.fire("Error", "No se pudo cargar la historia clínica.", "error");
-
-      setHistorias([]); // evita fallos en map()
+      setHistorias([]);
     }
   };
 
-  // 🔥 BLINDAMOS TAMBIÉN EL FILTRO
+  // ✅ FILTRO: buscador + especie (TODOS / PERRO / GATO / OTROS)
   const mascotasFiltradas = Array.isArray(mascotas)
-    ? mascotas.filter((m) =>
-        m.nombre?.toLowerCase().includes(busqueda.toLowerCase())
-      )
+    ? mascotas.filter((m) => {
+        const nombre = (m.nombre || "").toLowerCase();
+        const especie = (m.especie || "").toLowerCase();
+
+        const coincideNombre = nombre.includes(busqueda.toLowerCase());
+        if (!coincideNombre) return false;
+
+        if (filtroEspecie === "TODOS") return true;
+        if (filtroEspecie === "PERRO") return especie === "perro";
+        if (filtroEspecie === "GATO") return especie === "gato";
+        if (filtroEspecie === "OTROS")
+          return !["perro", "gato"].includes(especie);
+
+        return true;
+      })
     : [];
 
   return (
     <div className="dashboard-vet">
-
       {/* NAVBAR */}
       <NavbarVet onRegistrar={() => setMostrarRegistrar(true)} />
 
@@ -87,17 +96,51 @@ export default function DashboardVet() {
         />
 
         <div className="panel-flex">
-
           {/* LISTA DE MASCOTAS */}
           <div className="mascotas-panel">
-            <h3>Mascotas</h3>
+            <div className="mascotas-panel-header">
+              <h3>Mascotas</h3>
+
+              {/* ✅ NUEVO: Botones de filtro */}
+              <div className="filtro-especie-botones">
+                <button
+                  type="button"
+                  className={filtroEspecie === "TODOS" ? "activo" : ""}
+                  onClick={() => setFiltroEspecie("TODOS")}
+                >
+                  🐾 Todos
+                </button>
+
+                <button
+                  type="button"
+                  className={filtroEspecie === "PERRO" ? "activo" : ""}
+                  onClick={() => setFiltroEspecie("PERRO")}
+                >
+                  🐶 Perros
+                </button>
+
+                <button
+                  type="button"
+                  className={filtroEspecie === "GATO" ? "activo" : ""}
+                  onClick={() => setFiltroEspecie("GATO")}
+                >
+                  🐱 Gatos
+                </button>
+
+                <button
+                  type="button"
+                  className={filtroEspecie === "OTROS" ? "activo" : ""}
+                  onClick={() => setFiltroEspecie("OTROS")}
+                >
+                  🐾 Otros
+                </button>
+              </div>
+            </div>
 
             {mascotasFiltradas.map((m) => {
               const especie = m.especie?.toLowerCase();
               const icono =
-                especie === "perro" ? "🐶" :
-                especie === "gato"  ? "🐱" :
-                                      "🐾";
+                especie === "perro" ? "🐶" : especie === "gato" ? "🐱" : "🐾";
 
               return (
                 <div
@@ -142,7 +185,6 @@ export default function DashboardVet() {
               </>
             )}
           </main>
-
         </div>
       </div>
 
@@ -160,7 +202,6 @@ export default function DashboardVet() {
           </div>
         </div>
       )}
-
     </div>
   );
 }
