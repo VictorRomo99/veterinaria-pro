@@ -1,14 +1,15 @@
 // src/pages/admin/AdminReportes.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminReportes.css";
 
 const API = import.meta.env.VITE_API_URL;
-const [periodo, setPeriodo] = useState("diario");
 
 
 export default function AdminReportes() {
   const token = localStorage.getItem("token");
+
+   const [periodo, setPeriodo] = useState("diario");
 
   const [data, setData] = useState({
     totalVentas: 0,
