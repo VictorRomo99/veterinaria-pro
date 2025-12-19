@@ -138,19 +138,85 @@ export default function RegistrarMascota({ onMascotaRegistrada, onClose }) {
             {duenoSeleccionado.apellido}
           </h3>
 
-          {Object.keys(nuevaMascota).map((campo) => (
-            <input
-              key={campo}
-              type={campo === "edad" || campo === "peso" ? "number" : "text"}
-              className="input-box"
-              placeholder={campo.toUpperCase()}
-              value={nuevaMascota[campo]}
-              onChange={(e) =>
-                setNuevaMascota({ ...nuevaMascota, [campo]: e.target.value })
-              }
-              required={campo === "nombre" || campo === "especie"}
-            />
-          ))}
+          {/* NOMBRE */}
+<input
+  className="input-box"
+  placeholder="NOMBRE"
+  value={nuevaMascota.nombre}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, nombre: e.target.value })
+  }
+  required
+/>
+
+{/* ESPECIE */}
+<input
+  className="input-box"
+  placeholder="ESPECIE"
+  value={nuevaMascota.especie}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, especie: e.target.value })
+  }
+  required
+/>
+
+{/* RAZA */}
+<input
+  className="input-box"
+  placeholder="RAZA"
+  value={nuevaMascota.raza}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, raza: e.target.value })
+  }
+/>
+
+{/* 🔽 SEXO (SELECT CONTROLADO) */}
+<select
+  className="input-box"
+  value={nuevaMascota.sexo}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, sexo: e.target.value })
+  }
+  required
+>
+  <option value="">SELECCIONE SEXO</option>
+  <option value="macho">Macho</option>
+  <option value="hembra">Hembra</option>
+</select>
+
+{/* EDAD */}
+<input
+  type="number"
+  className="input-box"
+  placeholder="EDAD"
+  value={nuevaMascota.edad}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, edad: e.target.value })
+  }
+/>
+
+{/* COLOR */}
+<input
+  className="input-box"
+  placeholder="COLOR"
+  value={nuevaMascota.color}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, color: e.target.value })
+  }
+/>
+
+{/* PESO */}
+<input
+  type="number"
+  step="0.1"
+  className="input-box"
+  placeholder="PESO (kg)"
+  value={nuevaMascota.peso}
+  onChange={(e) =>
+    setNuevaMascota({ ...nuevaMascota, peso: e.target.value })
+  }
+/>
+
 
           <button type="submit" className="btn-guardar">
             Guardar mascota
